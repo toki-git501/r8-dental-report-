@@ -1,0 +1,3009 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>令和6年度 vs 令和8年度 歯科診療報酬改定 比較レポート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Noto+Serif+JP:wght@400;600;700;900&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2744;
+  --navy-light: #2a3d5c;
+  --coral: #e05a3a;
+  --coral-light: #fef0ed;
+  --teal: #0c9690;
+  --teal-light: #e6f7f6;
+  --blue: #3b7dd8;
+  --blue-light: #edf3fc;
+  --gold: #d4a017;
+  --gold-light: #fdf6e3;
+  --bg: #f6f5f1;
+  --card: #ffffff;
+  --text: #2d3436;
+  --text-sub: #636e72;
+  --border: #e0ddd6;
+  --shadow-sm: 0 1px 3px rgba(26,39,68,0.06);
+  --shadow-md: 0 4px 16px rgba(26,39,68,0.08);
+  --shadow-lg: 0 8px 32px rgba(26,39,68,0.10);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 20px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.85;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === NAV === */
+.nav {
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+.nav.scrolled { box-shadow: var(--shadow-md); }
+.nav-inner {
+  max-width: 1200px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 0 24px; height:56px;
+}
+.nav-logo {
+  font-family:'Noto Serif JP',serif; font-weight:700; font-size:15px;
+  color:var(--navy); letter-spacing:0.02em;
+  display:flex; align-items:center; gap:8px;
+}
+.nav-logo .badge {
+  background:var(--coral); color:#fff; font-size:10px; font-weight:700;
+  padding:2px 8px; border-radius:20px;
+  font-family:'Noto Sans JP',sans-serif;
+}
+.nav-links {
+  display:flex; gap:4px; list-style:none;
+  overflow-x:auto; -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.nav-links::-webkit-scrollbar { display:none; }
+.nav-links a {
+  display:block; padding:6px 12px; font-size:12px; font-weight:500;
+  color:var(--text-sub); text-decoration:none; border-radius:20px;
+  white-space:nowrap; transition:all 0.2s;
+}
+.nav-links a:hover, .nav-links a.active {
+  color:var(--navy); background:var(--bg);
+}
+
+/* === HERO === */
+.hero {
+  position: relative; overflow:hidden;
+  background: linear-gradient(135deg, #1a2744 0%, #2a4a7f 50%, #1a2744 100%);
+  padding: 120px 24px 80px;
+  text-align: center; color:#fff;
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 600px 400px at 20% 50%, rgba(12,150,144,0.2) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 300px at 80% 30%, rgba(224,90,58,0.15) 0%, transparent 70%);
+}
+.hero::after {
+  content:''; position:absolute; inset:0;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0v40M0 20h40' stroke='%23ffffff' stroke-width='0.3' opacity='0.06'/%3E%3C/svg%3E");
+}
+.hero-content { position:relative; z-index:1; max-width:800px; margin:0 auto; }
+
+.hero-date {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
+  border-radius:24px; padding:6px 18px;
+  font-size:13px; font-weight:500; letter-spacing:0.04em;
+  margin-bottom:28px;
+}
+
+.hero h1 {
+  font-family:'Noto Serif JP',serif; font-weight:900;
+  font-size: clamp(28px, 5vw, 48px);
+  line-height:1.3; letter-spacing:0.02em;
+  margin-bottom:12px;
+}
+.hero h1 .accent { color:#ff9f72; }
+
+.hero-sub {
+  font-size: clamp(14px, 2vw, 17px);
+  line-height:1.8; opacity:0.85; font-weight:300;
+  max-width:640px; margin:0 auto 36px;
+}
+
+.hero-stats {
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap:16px; max-width:640px; margin:0 auto;
+}
+.hero-stat {
+  background: rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius);
+  padding:20px 16px;
+  backdrop-filter: blur(8px);
+}
+.hero-stat .label {
+  font-size:11px; font-weight:500; opacity:0.7;
+  text-transform:uppercase; letter-spacing:0.08em;
+  margin-bottom:4px;
+}
+.hero-stat .value {
+  font-family:'Source Code Pro',monospace; font-weight:600;
+  font-size:28px; line-height:1.2;
+}
+.hero-stat .value .unit { font-size:14px; opacity:0.7; }
+.hero-stat .note { font-size:11px; opacity:0.6; margin-top:4px; }
+
+.hero-stat.accent-coral .value { color:#ff9f72; }
+.hero-stat.accent-teal .value { color:#5eeae4; }
+
+.scroll-hint {
+  margin-top:40px; opacity:0.5; font-size:12px; letter-spacing:0.1em;
+  animation: float 2s ease-in-out infinite;
+}
+@keyframes float {
+  0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)}
+}
+
+/* === SECTION LAYOUT === */
+.section {
+  max-width:1120px; margin:0 auto;
+  padding:80px 24px;
+}
+.section-header {
+  margin-bottom:48px;
+}
+.section-num {
+  font-family:'Source Code Pro',monospace; font-weight:600;
+  font-size:13px; color:var(--coral);
+  letter-spacing:0.1em; margin-bottom:8px;
+}
+.section-title {
+  font-family:'Noto Serif JP',serif; font-weight:700;
+  font-size: clamp(22px, 3.5vw, 32px);
+  line-height:1.4; color:var(--navy);
+  margin-bottom:12px;
+}
+.section-desc {
+  font-size:15px; color:var(--text-sub); line-height:1.8;
+  max-width:720px;
+}
+
+/* === CARDS === */
+.card {
+  background:var(--card); border-radius:var(--radius);
+  box-shadow:var(--shadow-sm); border:1px solid var(--border);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+
+/* === HIGHLIGHT CARDS (Top 10) === */
+.top10-grid {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));
+  gap:20px;
+}
+.top10-card {
+  padding:24px; position:relative; overflow:hidden; cursor:pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.top10-card:hover { box-shadow:var(--shadow-md); transform:translateY(-3px); }
+.top10-card::after {
+  content:'詳しく見る →'; position:absolute; bottom:14px; right:16px;
+  font-size:11px; color:var(--blue); font-weight:600; opacity:0;
+  transition:opacity 0.2s;
+}
+
+
+.top10-card::after { display:none; }
+
+.top10-btn {
+  margin-top:12px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--navy);
+  color:#fff;
+  border:none;
+  border-radius:999px;
+  padding:6px 14px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.04em;
+  cursor:pointer;
+  box-shadow:var(--shadow-sm);
+  transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.top10-btn:hover { transform:translateY(-1px); box-shadow:var(--shadow-md); background:var(--navy-light); }
+.top10-btn:active { transform:translateY(0); }
+.top10-card:hover::after { opacity:1; }
+.top10-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+}
+.top10-card.impact-high::before { background:var(--coral); }
+.top10-card.impact-mid::before { background:var(--gold); }
+.top10-card.impact-new::before { background:var(--teal); }
+
+.top10-rank {
+  font-family:'Source Code Pro',monospace; font-size:36px;
+  font-weight:600; color:var(--border); line-height:1;
+  position:absolute; top:16px; right:16px;
+}
+.top10-badge {
+  display:inline-block; font-size:10px; font-weight:700;
+  padding:3px 10px; border-radius:20px; margin-bottom:10px;
+  letter-spacing:0.04em;
+}
+.badge-answer { background:var(--blue-light); color:var(--blue); }
+.badge-confirmed { background:var(--teal-light); color:var(--teal); }
+
+.top10-title {
+  font-weight:700; font-size:15px; color:var(--navy);
+  margin-bottom:8px; padding-right:40px; line-height:1.5;
+}
+.top10-detail {
+  font-size:13px; color:var(--text-sub); line-height:1.7;
+}
+.top10-points {
+  display:inline-flex; align-items:center; gap:4px;
+  font-family:'Source Code Pro',monospace; font-weight:600;
+  font-size:13px; margin-top:10px; padding:4px 10px;
+  border-radius:6px;
+}
+.points-up { background:var(--coral-light); color:var(--coral); }
+.points-new { background:var(--teal-light); color:var(--teal); }
+.points-down { background:var(--blue-light); color:var(--blue); }
+
+/* === DETAIL MODAL === */
+.modal-overlay {
+  display:none; position:fixed; top:0; left:0; right:0; bottom:0;
+  background:rgba(26,39,68,0.55); z-index:2000;
+  justify-content:center; align-items:flex-start;
+  padding:40px 20px; overflow-y:auto;
+  backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+  animation:fadeIn 0.25s ease;
+}
+.modal-overlay.active { display:flex; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes slideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+.modal-content {
+  background:var(--card); border-radius:var(--radius-lg);
+  max-width:780px; width:100%; box-shadow:var(--shadow-lg);
+  position:relative; animation:slideUp 0.3s ease;
+  margin:auto;
+}
+.modal-header {
+  padding:32px 36px 20px; border-bottom:1px solid var(--border);
+  position:relative;
+}
+.modal-header .modal-rank {
+  font-family:'Source Code Pro',monospace; font-size:14px;
+  font-weight:600; color:#fff; background:var(--navy);
+  padding:4px 12px; border-radius:20px; display:inline-block;
+  margin-bottom:10px;
+}
+.modal-header .modal-rank.rank-high { background:var(--coral); }
+.modal-header .modal-rank.rank-mid { background:var(--gold); }
+.modal-header .modal-rank.rank-new { background:var(--teal); }
+.modal-header h3 {
+  font-size:20px; font-weight:700; color:var(--navy);
+  line-height:1.5; margin-bottom:4px;
+}
+.modal-header .modal-subtitle {
+  font-size:13px; color:var(--text-sub);
+}
+.modal-close {
+  position:absolute; top:20px; right:20px;
+  width:36px; height:36px; border-radius:50%;
+  border:none; background:var(--bg); cursor:pointer;
+  font-size:18px; color:var(--text-sub);
+  display:flex; align-items:center; justify-content:center;
+  transition:background 0.2s;
+}
+.modal-close:hover { background:var(--border); }
+
+.modal-body { padding:28px 36px 36px; }
+
+.modal-section { margin-bottom:24px; }
+.modal-section:last-child { margin-bottom:0; }
+.modal-section-title {
+  font-size:13px; font-weight:700; color:var(--coral);
+  text-transform:uppercase; letter-spacing:0.08em;
+  margin-bottom:10px; display:flex; align-items:center; gap:8px;
+}
+.modal-section-title::before {
+  content:''; width:3px; height:14px; background:var(--coral);
+  border-radius:2px; flex-shrink:0;
+}
+
+.modal-comparison {
+  display:grid; grid-template-columns:1fr auto 1fr; gap:0;
+  border:1px solid var(--border); border-radius:var(--radius);
+  overflow:hidden; margin-bottom:16px;
+}
+.modal-comp-col {
+  padding:16px 20px;
+}
+.modal-comp-col.r6 { background:var(--bg); }
+.modal-comp-col.arrow {
+  display:flex; align-items:center; justify-content:center;
+  padding:10px; font-size:20px; color:var(--coral); font-weight:700;
+  background:var(--bg);
+}
+.modal-comp-col.r8 { background:#fff; }
+.modal-comp-label {
+  font-size:11px; font-weight:700; color:var(--text-sub);
+  text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px;
+}
+.modal-comp-value {
+  font-family:'Source Code Pro',monospace; font-size:22px;
+  font-weight:700; color:var(--navy); line-height:1.3;
+}
+.modal-comp-note { font-size:12px; color:var(--text-sub); margin-top:4px; }
+
+.modal-impact-box {
+  background:var(--coral-light); border-radius:var(--radius-sm);
+  padding:14px 18px; display:flex; align-items:center; gap:12px;
+  margin-bottom:16px;
+}
+.modal-impact-box.new { background:var(--teal-light); }
+.modal-impact-icon {
+  font-size:24px; flex-shrink:0;
+}
+.modal-impact-text {
+  font-size:13px; line-height:1.6; color:var(--text);
+}
+.modal-impact-text strong {
+  font-weight:700; color:var(--coral);
+}
+.modal-impact-box.new .modal-impact-text strong {
+  color:var(--teal);
+}
+
+.modal-checklist {
+  list-style:none; padding:0;
+}
+.modal-checklist li {
+  font-size:13px; line-height:1.7; padding:6px 0 6px 24px;
+  position:relative; color:var(--text);
+  border-bottom:1px solid var(--bg);
+}
+.modal-checklist li::before {
+  content:'☐'; position:absolute; left:0; top:6px;
+  color:var(--coral); font-size:14px;
+}
+.modal-checklist li:last-child { border-bottom:none; }
+
+.modal-risk-tag {
+  display:inline-block; font-size:11px; font-weight:700;
+  padding:2px 8px; border-radius:4px; margin-right:6px;
+}
+.modal-risk-tag.high { background:var(--coral-light); color:var(--coral); }
+.modal-risk-tag.mid { background:var(--gold-light); color:var(--gold); }
+
+.modal-prose {
+  font-size:13px; line-height:1.8; color:var(--text);
+}
+.modal-prose p { margin-bottom:10px; }
+.modal-prose p:last-child { margin-bottom:0; }
+
+.modal-kpi-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+  gap:10px;
+}
+.modal-kpi-item {
+  background:var(--bg); border-radius:var(--radius-sm);
+  padding:12px 14px; text-align:center;
+}
+.modal-kpi-value {
+  font-family:'Source Code Pro',monospace; font-size:18px;
+  font-weight:700; color:var(--navy);
+}
+.modal-kpi-label {
+  font-size:11px; color:var(--text-sub); margin-top:2px;
+}
+
+@media(max-width:640px){
+  .modal-overlay { padding:20px 10px; }
+  .modal-header { padding:24px 20px 16px; }
+  .modal-body { padding:20px; }
+  .modal-comparison { grid-template-columns:1fr; }
+  .modal-comp-col.arrow { padding:6px; font-size:16px; }
+  .modal-header h3 { font-size:17px; }
+}
+
+/* === COMPARISON TABLE === */
+.table-wrap {
+  overflow-x:auto; -webkit-overflow-scrolling:touch;
+  border-radius:var(--radius); border:1px solid var(--border);
+  background:var(--card); box-shadow:var(--shadow-sm);
+}
+.comp-table {
+  width:100%; border-collapse:collapse; font-size:13px;
+  min-width:800px;
+}
+.comp-table thead { background:var(--navy); color:#fff; }
+.comp-table th {
+  padding:14px 16px; font-weight:600; text-align:left;
+  font-size:12px; letter-spacing:0.04em; white-space:nowrap;
+}
+.comp-table td {
+  padding:12px 16px; border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+.comp-table tbody tr:hover { background:var(--bg); }
+.comp-table tbody tr.clickable-row {
+  cursor:pointer; transition:background 0.15s;
+}
+.comp-table tbody tr.clickable-row:hover {
+  background:var(--blue-light);
+}
+.comp-table tbody tr.clickable-row td:last-child::after {
+  content:' ▸'; font-size:10px; color:var(--blue); opacity:0.6;
+}
+.comp-table tbody tr.clickable-row:hover td:last-child::after {
+  opacity:1;
+}
+
+
+.comp-table tbody tr.clickable-row td:last-child::after { display:none; }
+
+.row-btn {
+  margin-left:8px;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  background:var(--navy);
+  color:#fff;
+  border:none;
+  border-radius:999px;
+  padding:4px 10px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.04em;
+  cursor:pointer;
+  box-shadow:var(--shadow-sm);
+  transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  vertical-align:middle;
+}
+.row-btn:hover { transform:translateY(-1px); box-shadow:var(--shadow-md); background:var(--navy-light); }
+.row-btn:active { transform:translateY(0); }
+.comp-table .cell-label {
+  font-weight:600; color:var(--navy);
+}
+.comp-table .cell-change {
+  font-family:'Source Code Pro',monospace; font-weight:600;
+}
+.cell-up { color:var(--coral); }
+.cell-down { color:var(--blue); }
+.cell-new { color:var(--teal); font-weight:600; }
+
+.tag {
+  display:inline-block; font-size:10px; font-weight:600;
+  padding:2px 8px; border-radius:4px; white-space:nowrap;
+}
+.tag-high { background:#fde8e4; color:var(--coral); }
+.tag-mid { background:var(--gold-light); color:#b8860b; }
+.tag-low { background:var(--blue-light); color:var(--blue); }
+.tag-answer { background:var(--blue-light); color:var(--blue); }
+.tag-confirmed { background:var(--teal-light); color:var(--teal); }
+
+/* === SCENARIO CARDS === */
+.scenario-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+  gap:20px;
+}
+.scenario-card {
+  padding:28px; position:relative;
+}
+.scenario-card .scenario-label {
+  font-size:12px; font-weight:700; letter-spacing:0.06em;
+  margin-bottom:4px;
+}
+.scenario-card .scenario-name {
+  font-family:'Noto Serif JP',serif; font-weight:700;
+  font-size:18px; color:var(--navy); margin-bottom:12px;
+}
+.scenario-card .scenario-amount {
+  font-family:'Source Code Pro',monospace; font-weight:600;
+  font-size:32px; line-height:1.2; margin-bottom:4px;
+}
+.scenario-card .scenario-annual {
+  font-size:13px; color:var(--text-sub); margin-bottom:16px;
+}
+.scenario-card .scenario-desc {
+  font-size:13px; color:var(--text-sub); line-height:1.7;
+}
+.scenario-conservative .scenario-label { color:var(--blue); }
+.scenario-conservative .scenario-amount { color:var(--blue); }
+.scenario-standard .scenario-label { color:var(--teal); }
+.scenario-standard .scenario-amount { color:var(--teal); }
+.scenario-aggressive .scenario-label { color:var(--coral); }
+.scenario-aggressive .scenario-amount { color:var(--coral); }
+
+.scenario-breakdown {
+  margin-top:16px; padding-top:16px; border-top:1px solid var(--border);
+}
+.breakdown-item {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:4px 0; font-size:12px;
+}
+.breakdown-item .bl { color:var(--text-sub); }
+.breakdown-item .bv {
+  font-family:'Source Code Pro',monospace; font-weight:600;
+}
+.kpi-chart-wrap {
+  margin-top:24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.kpi-chart-title {
+  font-weight:700; font-size:14px; color:var(--navy);
+  margin-bottom:10px;
+}
+.kpi-chart-note {
+  font-size:11px; color:var(--text-sub);
+  margin-top:8px;
+}
+.kpi-chart-wrap canvas {
+  width: 100% !important;
+  height: 220px !important;
+}
+
+/* === MODEL CLINIC PROFILE === */
+.profile-grid {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+  gap:12px; margin-bottom:32px;
+}
+.profile-item {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius-sm); padding:16px;
+  text-align:center;
+}
+.profile-item .pi-value {
+  font-family:'Source Code Pro',monospace; font-weight:600;
+  font-size:24px; color:var(--navy); margin-bottom:2px;
+}
+.profile-item .pi-label {
+  font-size:11px; color:var(--text-sub); font-weight:500;
+}
+
+/* === TIMELINE === */
+.timeline { position:relative; padding-left:36px; }
+.timeline::before {
+  content:''; position:absolute; left:14px; top:0; bottom:0;
+  width:2px; background:var(--border);
+}
+.tl-item {
+  position:relative; margin-bottom:28px; padding-bottom:4px;
+}
+.tl-dot {
+  position:absolute; left:-30px; top:4px;
+  width:14px; height:14px; border-radius:50%;
+  border:3px solid var(--card);
+  box-shadow: 0 0 0 2px var(--border);
+}
+.tl-dot.dot-red { background:var(--coral); box-shadow: 0 0 0 2px var(--coral); }
+.tl-dot.dot-teal { background:var(--teal); box-shadow: 0 0 0 2px var(--teal); }
+.tl-dot.dot-blue { background:var(--blue); box-shadow: 0 0 0 2px var(--blue); }
+.tl-dot.dot-gold { background:var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+
+.tl-date {
+  font-family:'Source Code Pro',monospace; font-weight:600;
+  font-size:13px; color:var(--coral); margin-bottom:4px;
+}
+.tl-title {
+  font-weight:700; font-size:15px; color:var(--navy); margin-bottom:4px;
+}
+.tl-desc { font-size:13px; color:var(--text-sub); line-height:1.7; }
+
+/* === CHECKLIST === */
+.checklist-grid {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));
+  gap:16px;
+}
+.cl-item {
+  display:flex; gap:12px; align-items:flex-start;
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius-sm); padding:16px;
+  transition: border-color 0.2s;
+}
+.cl-item:hover { border-color:var(--navy); }
+.cl-check {
+  flex-shrink:0; width:22px; height:22px;
+  border:2px solid var(--border); border-radius:6px;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; transition:all 0.2s;
+}
+.cl-check.checked {
+  background:var(--teal); border-color:var(--teal);
+}
+.cl-check.checked::after {
+  content:'✓'; color:#fff; font-size:13px; font-weight:700;
+}
+.cl-text { flex:1; }
+.cl-text .cl-label { font-weight:600; font-size:14px; color:var(--navy); }
+.cl-text .cl-sub { font-size:12px; color:var(--text-sub); margin-top:2px; }
+.cl-priority {
+  flex-shrink:0;
+}
+
+/* === RISK TABLE === */
+.risk-card {
+  padding:20px; margin-bottom:12px;
+}
+.risk-header {
+  display:flex; align-items:center; gap:10px; margin-bottom:8px;
+}
+.risk-level {
+  width:8px; height:8px; border-radius:50%; flex-shrink:0;
+}
+.risk-high { background:var(--coral); }
+.risk-mid { background:var(--gold); }
+.risk-low { background:var(--blue); }
+.risk-title { font-weight:700; font-size:14px; color:var(--navy); }
+.risk-content { font-size:13px; color:var(--text-sub); line-height:1.7; padding-left:18px; }
+
+/* === FORECAST === */
+.forecast-grid {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));
+  gap:20px;
+}
+.forecast-card { padding:24px; }
+.forecast-icon { font-size:28px; margin-bottom:12px; }
+.forecast-title {
+  font-weight:700; font-size:15px; color:var(--navy);
+  margin-bottom:12px;
+}
+.forecast-scenarios { font-size:13px; line-height:1.7; }
+.fs-row { padding:6px 0; border-bottom:1px solid var(--border); }
+.fs-row:last-child { border:none; }
+.fs-label {
+  font-weight:600; font-size:11px; letter-spacing:0.04em;
+  margin-bottom:2px;
+}
+.fs-base .fs-label { color:var(--text-sub); }
+.fs-up .fs-label { color:var(--teal); }
+.fs-down .fs-label { color:var(--coral); }
+
+/* === KPI MONITOR === */
+.kpi-grid {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+  gap:12px;
+}
+.kpi-item {
+  display:flex; align-items:center; gap:14px;
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius-sm); padding:16px;
+}
+.kpi-num {
+  font-family:'Source Code Pro',monospace; font-weight:600;
+  font-size:20px; color:var(--border); width:32px; text-align:center;
+  flex-shrink:0;
+}
+.kpi-text { flex:1; }
+.kpi-text .kpi-name { font-weight:600; font-size:13px; color:var(--navy); }
+.kpi-text .kpi-method { font-size:11px; color:var(--text-sub); margin-top:2px; }
+
+/* === CALLOUT === */
+.callout {
+  display:flex; gap:14px; padding:20px 24px;
+  border-radius:var(--radius-sm); margin:24px 0;
+  font-size:14px; line-height:1.7;
+}
+.callout-icon { flex-shrink:0; font-size:20px; margin-top:2px; }
+.callout-info { background:var(--blue-light); border-left:3px solid var(--blue); }
+.callout-warn { background:var(--coral-light); border-left:3px solid var(--coral); }
+.callout-tip { background:var(--teal-light); border-left:3px solid var(--teal); }
+.callout-note { background:var(--gold-light); border-left:3px solid var(--gold); }
+
+/* === DIVIDER === */
+.divider {
+  border:none; border-top:1px solid var(--border);
+  margin:60px auto; max-width:200px;
+}
+
+/* === TABLE OF CONTENTS === */
+.toc-section {
+  max-width:1100px; margin:0 auto; padding:32px 24px 0;
+}
+.toc-inner {
+  background:#fff; border-radius:16px; padding:32px 36px;
+  box-shadow:var(--shadow-sm); border:1px solid var(--border);
+}
+.toc-title {
+  font-size:15px; font-weight:700; color:var(--navy); margin-bottom:20px;
+  letter-spacing:0.06em;
+}
+.toc-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:10px;
+}
+.toc-item {
+  display:flex; align-items:center; gap:10px; padding:10px 14px;
+  border-radius:8px; text-decoration:none; color:var(--text);
+  transition:all 0.15s; font-size:13px; border:1px solid transparent;
+}
+.toc-item:hover {
+  background:var(--blue-light); border-color:var(--blue);
+}
+.toc-num {
+  font-family:'Source Code Pro',monospace; font-weight:700; font-size:11px;
+  color:var(--blue); background:var(--blue-light); border-radius:4px;
+  padding:2px 7px; min-width:36px; text-align:center; white-space:nowrap;
+}
+.toc-text { font-weight:500; }
+
+/* === DETAIL BANNER === */
+.detail-banner {
+  display:flex; align-items:center; gap:12px;
+  background:linear-gradient(135deg,var(--blue-light) 0%,#e8f5f3 100%);
+  border:1px solid var(--teal); border-radius:10px;
+  padding:14px 20px; margin:20px 0 28px; cursor:default;
+  font-size:13px; color:var(--navy); font-weight:500;
+}
+.detail-banner .banner-icon {
+  font-size:20px; flex-shrink:0;
+}
+.detail-banner .banner-text { flex:1; }
+.detail-banner .banner-arrow {
+  color:var(--teal); font-weight:700; font-size:16px; animation:pulse-arrow 1.5s infinite;
+}
+@keyframes pulse-arrow {
+  0%,100% { opacity:0.5; transform:translateX(0); }
+  50% { opacity:1; transform:translateX(4px); }
+}
+
+/* === FOOTER === */
+.footer {
+  background:var(--navy); color:rgba(255,255,255,0.6);
+  padding:48px 24px; text-align:center; font-size:12px; line-height:1.8;
+}
+.footer a { color:rgba(255,255,255,0.8); text-decoration:underline; }
+.footer-title {
+  font-family:'Noto Serif JP',serif; font-weight:700;
+  color:#fff; font-size:16px; margin-bottom:16px;
+}
+
+/* === SENSITIVITY BAR === */
+.sens-bar-wrap { margin:24px 0; }
+.sens-bar-label { display:flex; justify-content:space-between; font-size:12px; color:var(--text-sub); margin-bottom:6px; }
+.sens-bar {
+  height:8px; border-radius:4px; background:var(--border); position:relative;
+  overflow:hidden;
+}
+.sens-bar-fill {
+  position:absolute; top:0; height:100%; border-radius:4px;
+}
+
+/* === PREMISE TABLE === */
+.premise-row {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:1px; background:var(--border);
+  border-radius:var(--radius); overflow:hidden; margin-bottom:20px;
+}
+.premise-row > div {
+  background:var(--card); padding:20px 24px;
+}
+.premise-label {
+  font-size:12px; font-weight:600; color:var(--text-sub);
+  letter-spacing:0.04em; margin-bottom:4px;
+}
+.premise-value {
+  font-weight:700; color:var(--navy); font-size:15px;
+}
+.premise-sub { font-size:12px; color:var(--text-sub); margin-top:2px; }
+
+/* === TAB SWITCHER === */
+.tab-container { margin:32px 0; }
+.tab-nav {
+  display:flex; gap:4px; margin-bottom:20px;
+  border-bottom:2px solid var(--border); padding-bottom:0;
+}
+.tab-btn {
+  padding:10px 20px; font-size:13px; font-weight:600;
+  color:var(--text-sub); background:none; border:none;
+  cursor:pointer; border-bottom:2px solid transparent;
+  margin-bottom:-2px; transition:all 0.2s;
+}
+.tab-btn.active {
+  color:var(--navy); border-bottom-color:var(--coral);
+}
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+
+/* === RESPONSIVE === */
+@media (max-width:768px) {
+  .nav-links { display:none; }
+  .hero { padding:100px 20px 60px; }
+  .hero-stats { grid-template-columns:1fr 1fr; }
+  .section { padding:48px 16px; }
+  .top10-grid { grid-template-columns:1fr; }
+  .scenario-grid { grid-template-columns:1fr; }
+  .checklist-grid { grid-template-columns:1fr; }
+  .profile-grid { grid-template-columns:1fr 1fr; }
+  .premise-row { grid-template-columns:1fr; }
+  .forecast-grid { grid-template-columns:1fr; }
+  .kpi-grid { grid-template-columns:1fr; }
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.fade-up {
+  opacity:0; animation:fadeUp 0.6s ease forwards;
+}
+.fade-up.d1 { animation-delay:0.1s; }
+.fade-up.d2 { animation-delay:0.2s; }
+.fade-up.d3 { animation-delay:0.3s; }
+.fade-up.d4 { animation-delay:0.4s; }
+
+/* === SCROLL ANIMATION === */
+.reveal { opacity:0; transform:translateY(20px); transition:all 0.6s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* === BADGE ROW === */
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+
+/* === INLINE STAT === */
+.inline-stat {
+  display:inline-flex; align-items:baseline; gap:4px;
+}
+.inline-stat .is-value {
+  font-family:'Source Code Pro',monospace; font-weight:600;
+}
+
+/* === POINT CHANGE ARROW === */
+.pt-change {
+  display:inline-flex; align-items:center; gap:3px;
+  font-family:'Source Code Pro',monospace; font-weight:600;
+  font-size:13px;
+}
+.pt-change .arrow { font-size:11px; }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      R6 vs R8 歯科改定
+      <span class="badge">2026</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#summary">注目10項目</a></li>
+      <li><a href="#premise">前提</a></li>
+      <li><a href="#compare">制度比較</a></li>
+      <li><a href="#points">点数比較</a></li>
+      <li><a href="#simulation">収益試算</a></li>
+      <li><a href="#timeline">準備スケジュール</a></li>
+      <li><a href="#risk">監査リスク</a></li>
+      <li><a href="#forecast">業界予測</a></li>
+      <li><a href="#checklist">チェックリスト</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-date fade-up">
+      📋 2026年2月13日 中医協答申
+    </div>
+    <h1 class="fade-up d1">
+      令和<span class="accent">6</span>年度 vs 令和<span class="accent">8</span>年度<br>
+      歯科診療報酬改定 比較レポート
+    </h1>
+    <p class="hero-sub fade-up d2">
+      30年ぶりの高改定率+3.09%。「賃上げ」と「物価高騰対応」を柱とする<br>
+      令和8年度改定の全貌を、令和6年度との差分で徹底比較します。
+    </p>
+    <div class="hero-stats fade-up d3">
+      <div class="hero-stat accent-coral">
+        <div class="label">本体改定率（2年度平均）</div>
+        <div class="value">+3.09<span class="unit">%</span></div>
+        <div class="note">R8: +2.41% ／ R9: +3.77%</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">R6改定率</div>
+        <div class="value">+0.88<span class="unit">%</span></div>
+        <div class="note">差分 +2.21pt</div>
+      </div>
+      <div class="hero-stat accent-teal">
+        <div class="label">施行日</div>
+        <div class="value" style="font-size:22px;">2026.6.1</div>
+        <div class="note">告示は3月上旬予定</div>
+      </div>
+    </div>
+    <div class="scroll-hint fade-up d4">▼ SCROLL</div>
+  </div>
+</header>
+
+<!-- ===== TABLE OF CONTENTS ===== -->
+<nav class="toc-section" id="toc">
+  <div class="toc-inner reveal">
+    <div class="toc-title">📑 目 次</div>
+    <div class="toc-grid">
+      <a href="#summary" class="toc-item"><span class="toc-num">01</span><span class="toc-text">経営インパクト Top 10</span></a>
+      <a href="#premise" class="toc-item"><span class="toc-num">02</span><span class="toc-text">前提条件の比較</span></a>
+      <a href="#compare" class="toc-item"><span class="toc-num">03</span><span class="toc-text">制度・要件・運用の比較</span></a>
+      <a href="#points" class="toc-item"><span class="toc-num">04</span><span class="toc-text">主要点数の新旧比較</span></a>
+      <a href="#simulation" class="toc-item"><span class="toc-num">05</span><span class="toc-text">モデル医院 収益シミュレーション</span></a>
+      <a href="#timeline" class="toc-item"><span class="toc-num">06–07</span><span class="toc-text">スケジュール＆準備</span></a>
+      <a href="#risk" class="toc-item"><span class="toc-num">08</span><span class="toc-text">リスクと注意点</span></a>
+      <a href="#forecast" class="toc-item"><span class="toc-num">09</span><span class="toc-text">歯科業界の未来予測</span></a>
+      <a href="#checklist" class="toc-item"><span class="toc-num">10–11</span><span class="toc-text">実施チェックリスト</span></a>
+      <a href="#references" class="toc-item"><span class="toc-num">12</span><span class="toc-text">参照ソース一覧</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== SECTION 1: EXECUTIVE SUMMARY ===== -->
+<section class="section" id="summary">
+  <div class="section-header reveal">
+    <div class="section-num">SECTION 01</div>
+    <h2 class="section-title">経営インパクト Top 10</h2>
+    <p class="section-desc">
+      令和8年度改定で最も収益影響が大きい項目を、インパクト順にランキング。すべて2026年2月13日の中医協答申に基づく「答申ベース」データです。
+    </p>
+  </div>
+
+  <div class="detail-banner reveal">
+    <span class="banner-icon">💡</span>
+    <span class="banner-text">各カードをクリックすると、経緯・解説ポイント・月次収益インパクトなどの<strong>詳細ページ</strong>が開きます。</span>
+    <span class="banner-arrow">▶</span>
+  </div>
+
+  <div class="top10-grid">
+    <!-- 1 -->
+    <div class="card top10-card impact-high reveal" data-detail="1" onclick="openDetail(1)">
+      <span class="top10-rank">01</span>
+      <span class="top10-badge badge-answer">答申ベース</span>
+      <div class="top10-title">ベースアップ評価料(Ⅰ)の大幅拡充</div>
+      <div class="top10-detail">
+        初診時 10点→21点（賃上げ継続なら31点）、再診時 2点→4点（同6点）。R9年6月以降はさらに2倍。全患者に影響し月次収益インパクト最大。
+      </div>
+      <span class="top10-points points-up">初診 +11〜+21点 ／ 再診 +2〜+4点</span>
+      <button class="top10-btn" type="button">詳細を見る</button>
+    </div>
+    <!-- 2 -->
+    <div class="card top10-card impact-high reveal" data-detail="4" onclick="openDetail(4)">
+      <span class="top10-rank">02</span>
+      <span class="top10-badge badge-answer">答申ベース</span>
+      <div class="top10-title">初診料・再診料の底上げ + 歯科外来物価対応料</div>
+      <div class="top10-detail">
+        初診 267→272点(+5)、再診 58→59点(+1)。物価対応料を新設し初診3点・再診1点を加算。R9年度は自動で2倍化。届出不要・全患者に波及。
+      </div>
+      <span class="top10-points points-up">初診 +8点 ／ 再診 +2点（物価対応料込み）</span>
+      <button class="top10-btn" type="button">詳細を見る</button>
+    </div>
+    <!-- 3 -->
+    <div class="card top10-card impact-high reveal" data-detail="2" onclick="openDetail(2)">
+      <span class="top10-rank">03</span>
+      <span class="top10-badge badge-answer">答申ベース</span>
+      <div class="top10-title">口腔機能管理料の増点・再編</div>
+      <div class="top10-detail">
+        60点→口腔機能管理料1（90点）。+30点/人。「管理する歯科」への転換を促す最大級インセンティブ。
+      </div>
+      <span class="top10-points points-up">+30点/人</span>
+      <button class="top10-btn" type="button">詳細を見る</button>
+    </div>
+    <!-- 4 -->
+    <div class="card top10-card impact-high reveal" data-detail="6" onclick="openDetail(6)">
+      <span class="top10-rank">04</span>
+      <span class="top10-badge badge-answer">答申ベース</span>
+      <div class="top10-title">口腔機能実地指導料の新設</div>
+      <div class="top10-detail">
+        歯科医師の指示のもと歯科衛生士が実地指導を行う場合に新設。口腔機能管理との一体運用を促進。
+      </div>
+      <span class="top10-points points-new">新設 46点</span>
+      <button class="top10-btn" type="button">詳細を見る</button>
+    </div>
+    <!-- 5 -->
+    <div class="card top10-card impact-mid reveal" data-detail="7" onclick="openDetail(7)">
+      <span class="top10-rank">05</span>
+      <span class="top10-badge badge-answer">答申ベース</span>
+      <div class="top10-title">歯科疾患管理料の減点（100→90点）</div>
+      <div class="top10-detail">
+        口腔機能管理料・口腔機能実地指導料の算定がない場合は実質減点。口腔機能管理へのシフトを促す改定。
+      </div>
+      <span class="top10-points points-down">-10点/人</span>
+      <button class="top10-btn" type="button">詳細を見る</button>
+    </div>
+    <!-- 6 -->
+    <div class="card top10-card impact-mid reveal" data-detail="3" onclick="openDetail(3)">
+      <span class="top10-rank">06</span>
+      <span class="top10-badge badge-answer">答申ベース</span>
+      <div class="top10-title">SPT・P重防の一本化</div>
+      <div class="top10-detail">
+        「歯周病継続支援治療」に統合。レセコンマスター・運用手順書・カルテテンプレートの全面改修が必須。
+      </div>
+      <span class="top10-points points-up">統合再編 ─ 運用変更最大</span>
+      <button class="top10-btn" type="button">詳細を見る</button>
+    </div>
+    <!-- 7 -->
+    <div class="card top10-card impact-mid reveal" data-detail="10" onclick="openDetail(10)">
+      <span class="top10-rank">07</span>
+      <span class="top10-badge badge-answer">答申ベース</span>
+      <div class="top10-title">重症化予防連携強化加算（医科歯科連携）</div>
+      <div class="top10-detail">
+        糖尿病患者等の紹介に基づき歯周治療を実施し、診療情報を提供した場合に算定できる新設加算。
+      </div>
+      <span class="top10-points points-new">新設 100点</span>
+      <button class="top10-btn" type="button">詳細を見る</button>
+    </div>
+    <!-- 8 -->
+    <div class="card top10-card impact-mid reveal" data-detail="5" onclick="openDetail(5)">
+      <span class="top10-rank">08</span>
+      <span class="top10-badge badge-answer">答申ベース</span>
+      <div class="top10-title">光学印象の増点・対象拡大</div>
+      <div class="top10-detail">
+        100点→150点。CAD/CAM冠にも対象拡大。口腔内スキャナー導入の投資判断が経営課題に直結。
+      </div>
+      <span class="top10-points points-up">+50点/歯</span>
+      <button class="top10-btn" type="button">詳細を見る</button>
+    </div>
+    <!-- 9 -->
+    <div class="card top10-card impact-new reveal" data-detail="9" onclick="openDetail(9)">
+      <span class="top10-rank">09</span>
+      <span class="top10-badge badge-answer">答申ベース</span>
+      <div class="top10-title">周術期・回復期の口腔機能管理（新設）</div>
+      <div class="top10-detail">
+        周術期等口腔機能管理計画策定料1（300点）・計画策定料2（150点）などが新設。病院連携の新たな収益源。
+      </div>
+      <span class="top10-points points-new">新設 300点/150点</span>
+      <button class="top10-btn" type="button">詳細を見る</button>
+    </div>
+    <!-- 10 -->
+    <div class="card top10-card impact-new reveal" data-detail="8" onclick="openDetail(8)">
+      <span class="top10-rank">10</span>
+      <span class="top10-badge badge-answer">答申ベース</span>
+      <div class="top10-title">口腔管理体制強化加算（口管強）の算定メリット</div>
+      <div class="top10-detail">
+        加算点数は据え置き見込みだが基本点数が大幅に変動。歯管-10点に対し口腔機能管理は+30点で、算定設計の再構築が必要。
+      </div>
+      <span class="top10-points points-up">基本点変動 ─ 算定設計必須</span>
+      <button class="top10-btn" type="button">詳細を見る</button>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 2: PREMISE ===== -->
+<section class="section" id="premise">
+  <div class="section-header reveal">
+    <div class="section-num">SECTION 02</div>
+    <h2 class="section-title">比較の前提</h2>
+    <p class="section-desc">
+      本レポートのデータの確度・施行スケジュール・未公表領域を明示します。
+    </p>
+  </div>
+
+  <div class="premise-row reveal">
+    <div>
+      <div class="premise-label">令和6年度改定</div>
+      <div class="premise-value">確定</div>
+      <div class="premise-sub">答申 2024-02-14 ／ 施行 2024-06-01<br>告示・通知・疑義解釈すべて発出済み</div>
+    </div>
+    <div>
+      <div class="premise-label">令和8年度改定</div>
+      <div class="premise-value" style="color:var(--coral);">答申ベース</div>
+      <div class="premise-sub">答申 2026-02-13 ／ 施行予定 2026-06-01<br>告示・通知は3月上旬予定。要件詳細は未公表</div>
+    </div>
+  </div>
+
+  <div class="callout callout-warn reveal">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      <strong>令和8年度の未公表領域</strong><br>
+      算定要件の詳細文言、施設基準の届出様式・経過措置期間、疑義解釈、一部新設項目の正式点数（答申書に●●点で記載）は、3月上旬の告示・通知発出後に確定します。
+    </div>
+  </div>
+
+  <div class="premise-row reveal">
+    <div>
+      <div class="premise-label">改定率（本体）</div>
+      <div class="premise-value">R6: +0.88% → R8: +3.09%</div>
+      <div class="premise-sub">差分 +2.21pt。30年ぶりの高水準</div>
+    </div>
+    <div>
+      <div class="premise-label">R8年度の内訳</div>
+      <div class="premise-value">賃上げ +1.70% ／ 物価対応 +0.76%</div>
+      <div class="premise-sub">R8: +2.41%, R9: +3.77% の段階構成</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 3: SYSTEM COMPARISON ===== -->
+<section class="section" id="compare">
+  <div class="section-header reveal">
+    <div class="section-num">SECTION 03</div>
+    <h2 class="section-title">制度・要件・運用の比較</h2>
+    <p class="section-desc">
+      令和6年度と令和8年度の主要な制度変更を領域別に比較。現場影響度を可視化しています。
+    </p>
+  </div>
+
+  <div class="detail-banner reveal">
+    <span class="banner-icon">💡</span>
+    <span class="banner-text">各行をクリックすると、改定に至る<strong>経緯・背景</strong>と<strong>解説ポイント</strong>の詳細ページが開きます。</span>
+    <span class="banner-arrow">▶</span>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>領域</th>
+          <th>項目</th>
+          <th>令和6</th>
+          <th>令和8</th>
+          <th>差分・影響</th>
+          <th>確度</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="clickable-row" onclick="openS3Detail(1)">
+          <td><span class="tag tag-high">改定率</span></td>
+          <td class="cell-label">本体改定率</td>
+          <td>+0.88%</td>
+          <td class="cell-change cell-up">+3.09%</td>
+          <td>+2.21pt。30年ぶりの高水準</td>
+          <td><span class="tag tag-confirmed">確定</span><button class="row-btn" type="button">詳細</button></td>
+        </tr>
+        <tr class="clickable-row" onclick="openS3Detail(2)">
+          <td><span class="tag tag-high">賃上げ</span></td>
+          <td class="cell-label">ベースアップ評価料の対象職員</td>
+          <td>看護職員等の医療関係職種</td>
+          <td class="cell-new">全勤務職員に拡大</td>
+          <td>事務職員・歯科技工士も明確に包含。届出区分の再計算が必須</td>
+          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+        </tr>
+        <tr class="clickable-row" onclick="openS3Detail(3)">
+          <td><span class="tag tag-high">賃上げ</span></td>
+          <td class="cell-label">賃上げ継続による差別化</td>
+          <td>なし（一律）</td>
+          <td class="cell-new">継続賃上げ医院は高い点数を算定可</td>
+          <td>新規概念。届出・報告義務の追加</td>
+          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+        </tr>
+        <tr class="clickable-row" onclick="openS3Detail(4)">
+          <td><span class="tag tag-mid">施設基準</span></td>
+          <td class="cell-label">口管強（旧か強診）の名称・要件</td>
+          <td>現行の要件体系</td>
+          <td class="cell-new">名称・要件を見直し。口腔機能管理の実績要件追加</td>
+          <td>口腔機能検査の体制整備が前提条件に</td>
+          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+        </tr>
+        <tr class="clickable-row" onclick="openS3Detail(5)">
+          <td><span class="tag tag-high">歯周治療</span></td>
+          <td class="cell-label">SPT/P重防の体系</td>
+          <td>SPTとP重防が別建て</td>
+          <td class="cell-new">「歯周病継続支援治療」に一本化</td>
+          <td>レセコンマスター全面改修。運用変更最大級</td>
+          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+        </tr>
+        <tr class="clickable-row" onclick="openS3Detail(6)">
+          <td><span class="tag tag-mid">感染対策</span></td>
+          <td class="cell-label">外来環の体系</td>
+          <td>歯科外来診療環境体制加算1・2</td>
+          <td class="cell-new">感染対策加算と医療安全対策加算に分離</td>
+          <td>両方取得で合計点数増の可能性</td>
+          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+        </tr>
+        <tr class="clickable-row" onclick="openS3Detail(7)">
+          <td><span class="tag tag-mid">デジタル</span></td>
+          <td class="cell-label">光学印象の対象</td>
+          <td>CAD/CAMインレーのみ</td>
+          <td class="cell-new">CAD/CAMインレー + CAD/CAM冠</td>
+          <td>対象症例が大幅増加。スキャナー投資判断に直結</td>
+          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+        </tr>
+        <tr class="clickable-row" onclick="openS3Detail(8)">
+          <td><span class="tag tag-mid">訪問歯科</span></td>
+          <td class="cell-label">訪問診療の区分</td>
+          <td>訪問診療1〜3（3区分）</td>
+          <td class="cell-new">訪問診療1〜5（5区分）</td>
+          <td>単一建物1人は増点、多人数は実質減点</td>
+          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+        </tr>
+        <tr class="clickable-row" onclick="openS3Detail(9)">
+          <td><span class="tag tag-mid">物価対応</span></td>
+          <td class="cell-label">物価高騰への対応</td>
+          <td>なし</td>
+          <td class="cell-new">物価対応料を新設</td>
+          <td>R9年度は2倍に自動引き上げ</td>
+          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+        </tr>
+        <tr class="clickable-row" onclick="openS3Detail(10)">
+          <td><span class="tag tag-low">補綴</span></td>
+          <td class="cell-label">義歯クラスプ等の金属</td>
+          <td>金銀パラジウム合金等も可</td>
+          <td class="cell-new">コバルトクロム合金の原則化（答申ベース）</td>
+          <td>告示・通知で要件確定予定。パラ使用時の記載要件は最終確認が必要</td>
+          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 4: POINT COMPARISON ===== -->
+<section class="section" id="points">
+  <div class="section-header reveal">
+    <div class="section-num">SECTION 04</div>
+    <h2 class="section-title">主要点数の新旧比較</h2>
+    <p class="section-desc">
+      収益影響が大きい順に並べた点数比較表。月次影響概算はSection 5のモデル医院（延べ700名・新患30名→再診670件）に基づく推定値です。
+    </p>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>区分</th>
+          <th>項目</th>
+          <th style="text-align:right;">R6点数</th>
+          <th style="text-align:right;">R8点数</th>
+          <th style="text-align:right;">増減</th>
+          <th>要件変更</th>
+          <th style="text-align:right;">月次影響</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>基本診療</td>
+          <td class="cell-label">歯科初診料</td>
+          <td style="text-align:right;">267点</td>
+          <td style="text-align:right;">272点</td>
+          <td style="text-align:right;" class="cell-change cell-up">+5点</td>
+          <td>変更なし</td>
+          <td style="text-align:right;">+1,500円（30件）</td>
+        </tr>
+        <tr>
+          <td>基本診療</td>
+          <td class="cell-label">歯科再診料</td>
+          <td style="text-align:right;">58点</td>
+          <td style="text-align:right;">59点</td>
+          <td style="text-align:right;" class="cell-change cell-up">+1点</td>
+          <td>変更なし</td>
+          <td style="text-align:right;">+6,700円（670件）</td>
+        </tr>
+        <tr style="background:var(--teal-light);">
+          <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
+          <td class="cell-label">歯科外来物価対応料（初診時）</td>
+          <td style="text-align:right;">─</td>
+          <td style="text-align:right;">3点</td>
+          <td style="text-align:right;" class="cell-new">新設</td>
+          <td>令和9年6月以降は6点</td>
+          <td style="text-align:right;">+900円（30件）</td>
+        </tr>
+        <tr style="background:var(--teal-light);">
+          <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
+          <td class="cell-label">歯科外来物価対応料（再診時）</td>
+          <td style="text-align:right;">─</td>
+          <td style="text-align:right;">1点</td>
+          <td style="text-align:right;" class="cell-new">新設</td>
+          <td>令和9年6月以降は2点</td>
+          <td style="text-align:right;">+6,700円（670件）</td>
+        </tr>
+        <tr>
+          <td>賃上げ</td>
+          <td class="cell-label">ベースアップ評価料(Ⅰ) 初診時</td>
+          <td style="text-align:right;">10点</td>
+          <td style="text-align:right;">21〜31点</td>
+          <td style="text-align:right;" class="cell-change cell-up">+11〜+21点</td>
+          <td>対象職員拡大・継続賃上げ</td>
+          <td style="text-align:right;">+3,300〜6,300円（30件）</td>
+        </tr>
+        <tr>
+          <td>賃上げ</td>
+          <td class="cell-label">ベースアップ評価料(Ⅰ) 再診時</td>
+          <td style="text-align:right;">2点</td>
+          <td style="text-align:right;">4〜6点</td>
+          <td style="text-align:right;" class="cell-change cell-up">+2〜+4点</td>
+          <td>同上</td>
+          <td style="text-align:right;">+13,400〜26,800円（670件）</td>
+        </tr>
+        <tr>
+          <td>医学管理</td>
+          <td class="cell-label">口腔機能管理料</td>
+          <td style="text-align:right;">60点</td>
+          <td style="text-align:right;">90点</td>
+          <td style="text-align:right;" class="cell-change cell-up">+30点</td>
+          <td>対象患者の範囲拡大</td>
+          <td style="text-align:right;">+24,000円（80件）</td>
+        </tr>
+        <tr>
+          <td>医学管理</td>
+          <td class="cell-label">歯科疾患管理料</td>
+          <td style="text-align:right;">100点</td>
+          <td style="text-align:right;">90点</td>
+          <td style="text-align:right;" class="cell-change cell-down">-10点</td>
+          <td>評価の適正化</td>
+          <td style="text-align:right;">—（件数未定）</td>
+        </tr>
+        <tr>
+          <td>デジタル</td>
+          <td class="cell-label">光学印象（1歯）</td>
+          <td style="text-align:right;">100点</td>
+          <td style="text-align:right;">150点</td>
+          <td style="text-align:right;" class="cell-change cell-up">+50点</td>
+          <td>CAD/CAM冠に対象拡大</td>
+          <td style="text-align:right;">+4,000円（8件）</td>
+        </tr>
+        <tr>
+          <td>デジタル</td>
+          <td class="cell-label">CAD/CAMインレー</td>
+          <td style="text-align:right;">750点</td>
+          <td style="text-align:right;">770点</td>
+          <td style="text-align:right;" class="cell-change cell-up">+20点</td>
+          <td>対象継続</td>
+          <td style="text-align:right;">—（件数未定）</td>
+        </tr>
+        <tr>
+          <td>訪問</td>
+          <td class="cell-label">歯科訪問診療2</td>
+          <td style="text-align:right;">361点</td>
+          <td style="text-align:right;">410点</td>
+          <td style="text-align:right;" class="cell-change cell-up">+49点</td>
+          <td>区分細分化</td>
+          <td style="text-align:right;">訪問医院のみ</td>
+        </tr>
+        <tr>
+          <td>訪問</td>
+          <td class="cell-label">歯科訪問診療3</td>
+          <td style="text-align:right;">185点</td>
+          <td style="text-align:right;">310点</td>
+          <td style="text-align:right;" class="cell-change cell-up">+125点</td>
+          <td>区分細分化</td>
+          <td style="text-align:right;">訪問医院のみ</td>
+        </tr>
+        <tr>
+          <td>技工連携</td>
+          <td class="cell-label">技工士連携加算1（対面）</td>
+          <td style="text-align:right;">50点</td>
+          <td style="text-align:right;">60点</td>
+          <td style="text-align:right;" class="cell-change cell-up">+10点</td>
+          <td>─</td>
+          <td style="text-align:right;">+1,000円（件数未定）</td>
+        </tr>
+        <tr>
+          <td>技工連携</td>
+          <td class="cell-label">技工士連携加算2（ICT）</td>
+          <td style="text-align:right;">70点</td>
+          <td style="text-align:right;">80点</td>
+          <td style="text-align:right;" class="cell-change cell-up">+10点</td>
+          <td>─</td>
+          <td style="text-align:right;">+500円（件数未定）</td>
+        </tr>
+        <tr style="background:var(--teal-light);">
+          <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
+          <td class="cell-label">重症化予防連携強化加算（医科歯科連携）</td>
+          <td style="text-align:right;">─</td>
+          <td style="text-align:right;">100点</td>
+          <td style="text-align:right;" class="cell-new">新設</td>
+          <td>糖尿病患者等の紹介に基づく歯周治療＋情報提供</td>
+          <td style="text-align:right;">—（件数未定）</td>
+        </tr>
+        <tr style="background:var(--teal-light);">
+          <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
+          <td class="cell-label">回復期口腔機能管理計画策定料</td>
+          <td style="text-align:right;">─</td>
+          <td style="text-align:right;">300点</td>
+          <td style="text-align:right;" class="cell-new">新設</td>
+          <td>回復期リハ病棟等</td>
+          <td style="text-align:right;">病院連携医院</td>
+        </tr>
+        <tr style="background:var(--teal-light);">
+          <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
+          <td class="cell-label">回復期口腔機能管理料</td>
+          <td style="text-align:right;">─</td>
+          <td style="text-align:right;">200点</td>
+          <td style="text-align:right;" class="cell-new">新設</td>
+          <td>同上</td>
+          <td style="text-align:right;">同上</td>
+        </tr>
+        <tr style="background:var(--teal-light);">
+          <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
+          <td class="cell-label">歯科技工所ベースアップ支援料</td>
+          <td style="text-align:right;">─</td>
+          <td style="text-align:right;">15点/装置</td>
+          <td style="text-align:right;" class="cell-new">新設</td>
+          <td>委託先技工所の賃上げ前提</td>
+          <td style="text-align:right;">+1,500円（件数未定）</td>
+        </tr>
+        <tr style="background:var(--teal-light);">
+          <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
+          <td class="cell-label">歯周病患者画像活用指導料</td>
+          <td style="text-align:right;">─</td>
+          <td style="text-align:right;">50点</td>
+          <td style="text-align:right;" class="cell-new">新設</td>
+          <td>口腔内画像活用</td>
+          <td style="text-align:right;">+2,000円（4件）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-info reveal" style="margin-top:24px;">
+    <div class="callout-icon">📌</div>
+    <div>
+      <strong>歯周病継続支援治療（SPT/P重防統合後）</strong><br>
+      1〜9歯: 170点、10〜19歯: 200点、20歯以上: 350点（推定）。旧SPTと旧P重防の中間〜上限水準。算定要件は3月の告示で確定。
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 5: REVENUE SIMULATION ===== -->
+<section class="section" id="simulation">
+  <div class="section-header reveal">
+    <div class="section-num">SECTION 05</div>
+    <h2 class="section-title">モデル歯科医院の収益インパクト試算</h2>
+    <p class="section-desc">
+      4ユニット・保険比率80%の典型的な一般歯科医院を想定した3つのシミュレーションです。
+    </p>
+  </div>
+
+  <!-- Model Profile -->
+  <h3 style="font-weight:700; font-size:16px; color:var(--navy); margin-bottom:16px;" class="reveal">モデル医院プロファイル</h3>
+  <div class="profile-grid reveal">
+    <div class="profile-item">
+      <div class="pi-value">4<span style="font-size:14px;">台</span></div>
+      <div class="pi-label">ユニット数</div>
+    </div>
+    <div class="profile-item">
+      <div class="pi-value">80<span style="font-size:14px;">%</span></div>
+      <div class="pi-label">保険診療比率</div>
+    </div>
+    <div class="profile-item">
+      <div class="pi-value">700<span style="font-size:14px;">人</span></div>
+      <div class="pi-label">月延べ患者数</div>
+    </div>
+    <div class="profile-item">
+      <div class="pi-value">400<span style="font-size:14px;">枚</span></div>
+      <div class="pi-label">月間レセプト件数</div>
+    </div>
+    <div class="profile-item">
+      <div class="pi-value">30<span style="font-size:14px;">人</span></div>
+      <div class="pi-label">新患数/月</div>
+    </div>
+    <div class="profile-item">
+      <div class="pi-value">2<span style="font-size:14px;">名</span></div>
+      <div class="pi-label">常勤歯科衛生士数</div>
+    </div>
+  </div>
+
+  <!-- Scenarios -->
+  <h3 style="font-weight:700; font-size:16px; color:var(--navy); margin-bottom:16px;" class="reveal">3シナリオ試算</h3>
+  <div class="scenario-grid">
+    <!-- Conservative -->
+    <div class="card scenario-card scenario-conservative reveal">
+      <div class="scenario-label">SCENARIO A</div>
+      <div class="scenario-name">保守（現状維持）</div>
+      <div class="scenario-amount">+24,900<span style="font-size:16px;">円/月</span></div>
+      <div class="scenario-annual">年間 +約298,800円</div>
+      <div class="scenario-desc">新設加算を算定しない。初再診料の増点 + ベースアップ評価料(Ⅰ)の自動増点のみ。</div>
+      <div class="scenario-breakdown">
+        <div class="breakdown-item"><span class="bl">初診料 +5pt × 30件</span><span class="bv">+1,500円</span></div>
+        <div class="breakdown-item"><span class="bl">再診料 +1pt × 670件</span><span class="bv">+6,700円</span></div>
+        <div class="breakdown-item"><span class="bl">ベースアップ(Ⅰ)初診 +11pt × 30件</span><span class="bv">+3,300円</span></div>
+        <div class="breakdown-item"><span class="bl">ベースアップ(Ⅰ)再診 +2pt × 670件</span><span class="bv">+13,400円</span></div>
+      </div>
+    </div>
+    <!-- Standard -->
+    <div class="card scenario-card scenario-standard reveal">
+      <div class="scenario-label">SCENARIO B</div>
+      <div class="scenario-name">標準（一般的対応）</div>
+      <div class="scenario-amount">+65,300<span style="font-size:16px;">円/月</span></div>
+      <div class="scenario-annual">年間 +約783,600円</div>
+      <div class="scenario-desc">ベースアップ評価料を継続賃上げ区分で届出。口腔機能管理料1を80件算定。</div>
+      <div class="scenario-breakdown">
+        <div class="breakdown-item"><span class="bl">保守シナリオ分</span><span class="bv">+24,900円</span></div>
+        <div class="breakdown-item"><span class="bl">ベースアップ 継続賃上げ差分（初診）+10pt × 30件</span><span class="bv">+3,000円</span></div>
+        <div class="breakdown-item"><span class="bl">ベースアップ 継続賃上げ差分（再診）+2pt × 670件</span><span class="bv">+13,400円</span></div>
+        <div class="breakdown-item"><span class="bl">口腔機能管理料 +30pt × 80件</span><span class="bv">+24,000円</span></div>
+      </div>
+    </div>
+    <!-- Aggressive -->
+    <div class="card scenario-card scenario-aggressive reveal">
+      <div class="scenario-label">SCENARIO C</div>
+      <div class="scenario-name">積極（フル算定）</div>
+      <div class="scenario-amount">+98,800<span style="font-size:16px;">円/月</span></div>
+      <div class="scenario-annual">年間 +約1,185,600円</div>
+      <div class="scenario-desc">全施設基準整備。ベースアップ(Ⅰ)継続+(Ⅱ)上位。口腔機能・画像・技工連携・スキャナー導入。</div>
+      <div class="scenario-breakdown">
+        <div class="breakdown-item"><span class="bl">標準シナリオ分</span><span class="bv">+65,300円</span></div>
+        <div class="breakdown-item"><span class="bl">光学印象 +50pt × 8件</span><span class="bv">+4,000円</span></div>
+        <div class="breakdown-item"><span class="bl">技工連携・ベースアップ支援料</span><span class="bv">+2,500円</span></div>
+        <div class="breakdown-item"><span class="bl">画像活用指導 50pt × 4件</span><span class="bv">+2,000円</span></div>
+        <div class="breakdown-item"><span class="bl">ベースアップ(Ⅱ)上位区分 差分</span><span class="bv">+約25,000円</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sensitivity -->
+  <div class="callout callout-note reveal" style="margin-top:24px;">
+    <div class="callout-icon">📊</div>
+    <div>
+      <strong>感度分析（標準シナリオ）</strong><br>
+      算定件数が±20%変動した場合の月次収益変化幅: <strong>+52,200円〜+78,400円</strong>（変動幅 ±約13,100円/月）。口腔機能管理料の算定件数が最大の感度因子です。
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 6-7: TIMELINE & PREP ===== -->
+<section class="section" id="timeline">
+  <div class="section-header reveal">
+    <div class="section-num">SECTION 06–07</div>
+    <h2 class="section-title">施行までの準備スケジュール</h2>
+    <p class="section-desc">
+      院長（意思決定・経営判断）と事務長（実務執行）の両視点で、30/60/90/180日のマイルストーンを整理しました。
+    </p>
+  </div>
+
+  <div class="tab-container reveal">
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="tab-director">🏥 院長の準備</button>
+      <button class="tab-btn" data-tab="tab-admin">📋 事務長の準備</button>
+    </div>
+
+    <!-- Director Tab -->
+    <div class="tab-panel active" id="tab-director">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot dot-red"></div>
+          <div class="tl-date">7日以内 ─ 最優先</div>
+          <div class="tl-title">改定全体像の把握・経営方針の仮決定</div>
+          <div class="tl-desc">答申書を通読し、保守/標準/積極の3シナリオから経営方針を仮決定。意思決定の遅延が全体スケジュールを圧迫します。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot dot-red"></div>
+          <div class="tl-date">14日以内</div>
+          <div class="tl-title">ベースアップ評価料の方針決定・賃上げ幅の決裁</div>
+          <div class="tl-desc">継続賃上げ要件を満たすか判断。現在の給与総額とベースアップ計算支援ツールでシミュレーション。賃上げ率目標値を設定。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot dot-teal"></div>
+          <div class="tl-date">30日以内</div>
+          <div class="tl-title">口腔内スキャナー導入の投資判断</div>
+          <div class="tl-desc">光学印象の月間見込み件数とROI試算に基づき、導入の可否・機種選定・予算承認を決裁。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot dot-blue"></div>
+          <div class="tl-date">45〜60日以内</div>
+          <div class="tl-title">DH配置・施設基準・自費メニュー戦略</div>
+          <div class="tl-desc">口腔機能管理体制の人員計画、口管強の新基準への移行判断、保険拡大（CAD/CAM冠等）と自費の棲み分け再定義。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot dot-gold"></div>
+          <div class="tl-date">75〜90日以内</div>
+          <div class="tl-title">患者説明方針・外部連携・設備投資の最終決裁</div>
+          <div class="tl-desc">窓口負担変更の説明方法承認、回復期口腔管理の参入判断、滅菌機器・口腔機能検査機器の購入決裁。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot dot-red"></div>
+          <div class="tl-date" style="color:var(--teal);">2026年6月1日 ─ 施行日</div>
+          <div class="tl-title">新点数での算定開始</div>
+          <div class="tl-desc">初月は算定漏れがないか重点的にチェック。レセプトデータを翌月検証。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot dot-blue"></div>
+          <div class="tl-date">120〜180日以内</div>
+          <div class="tl-title">施行後の検証とR9準備</div>
+          <div class="tl-desc">6月分レセプトの乖離分析・方針修正、DH評価制度の調整、R9年度ベースアップ2倍化に向けた経営計画への着手。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Tab -->
+    <div class="tab-panel" id="tab-admin">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot dot-red"></div>
+          <div class="tl-date">7日以内 ─ 最優先</div>
+          <div class="tl-title">答申書の歯科関連部分を要約・院長報告</div>
+          <div class="tl-desc">中医協答申書の歯科部分を要約。院長の方針決定に必要なインプットを整理して報告。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot dot-red"></div>
+          <div class="tl-date">14日以内</div>
+          <div class="tl-title">ベースアップシミュレーション + レセコンベンダー確認</div>
+          <div class="tl-desc">厚労省Excel計算支援ツールで届出区分を仮確定。レセコンベンダーに改定対応スケジュールを確認（SPT統合のマスタ変更が特に重要）。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot dot-teal"></div>
+          <div class="tl-date">30日以内</div>
+          <div class="tl-title">告示・通知の精読・新設項目の算定要件一覧表作成</div>
+          <div class="tl-desc">3月上旬の告示・通知発出後、新旧対照表を作成。算定漏れ・誤算定防止の基礎資料となる。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot dot-blue"></div>
+          <div class="tl-date">45〜60日以内</div>
+          <div class="tl-title">施設基準書類・マニュアル・レセコンテスト</div>
+          <div class="tl-desc">施設基準届出書類の準備（院長承認要）、SPT→歯周病継続支援治療の移行マニュアル作成、レセコンマスター更新テスト。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot dot-gold"></div>
+          <div class="tl-date">75〜90日以内</div>
+          <div class="tl-title">届出提出・スタッフ研修・チェックリスト配布</div>
+          <div class="tl-desc">施設基準届出の厚生局提出、患者向け説明資料・掲示物の作成、スタッフ勉強会の実施（参加率100%・理解度テスト合格率80%以上が目標）。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot dot-red"></div>
+          <div class="tl-date" style="color:var(--teal);">2026年6月1日 ─ 施行日</div>
+          <div class="tl-title">新点数での算定開始</div>
+          <div class="tl-desc">算定漏れ防止チェックリストを全ユニットに配布。初月レセプトの全件チェック体制を構築。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot dot-blue"></div>
+          <div class="tl-date">120〜180日以内</div>
+          <div class="tl-title">実績報告・返戻分析・監査対応</div>
+          <div class="tl-desc">ベースアップ評価料の賃金改善実績報告の準備（8月期限）、6月分レセプト全件チェック、返戻/査定分析と再発防止策の策定、監査対応用の帳票整備。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 8: RISK ===== -->
+<section class="section" id="risk">
+  <div class="section-header reveal">
+    <div class="section-num">SECTION 08</div>
+    <h2 class="section-title">監査・査定リスクと対策</h2>
+    <p class="section-desc">
+      返戻・査定・個別指導で指摘されやすいリスク項目を優先度順に整理。日常チェック体制の構築が鍵です。
+    </p>
+  </div>
+
+  <!-- High Risk -->
+  <div class="card risk-card reveal">
+    <div class="risk-header">
+      <div class="risk-level risk-high"></div>
+      <span class="tag tag-high">高</span>
+      <div class="risk-title">ベースアップ評価料の賃金改善未達</div>
+    </div>
+    <div class="risk-content">
+      <strong>予防策：</strong>賃金改善計画書と実績の月次突合。給与支払額とベースアップ収入額の対照表を作成。<br>
+      <strong>チェック：</strong>月次で給与総額とベースアップ収入の対照確認（事務長担当）。
+    </div>
+  </div>
+  <div class="card risk-card reveal">
+    <div class="risk-header">
+      <div class="risk-level risk-high"></div>
+      <span class="tag tag-high">高</span>
+      <div class="risk-title">口腔機能管理料の算定要件逸脱</div>
+    </div>
+    <div class="risk-content">
+      <strong>予防策：</strong>口腔機能評価（舌圧検査等）の実施記録を診療録に必ず記載。管理計画書のテンプレート化。<br>
+      <strong>チェック：</strong>日次で算定患者の管理計画書有無チェック（DH＋事務長担当）。
+    </div>
+  </div>
+  <div class="card risk-card reveal">
+    <div class="risk-header">
+      <div class="risk-level risk-high"></div>
+      <span class="tag tag-high">高</span>
+      <div class="risk-title">SPT→歯周病継続支援治療の移行期エラー</div>
+    </div>
+    <div class="risk-content">
+      <strong>予防策：</strong>旧コードでの請求がないかレセプト全件チェック。移行期専用のチェックリスト運用。<br>
+      <strong>チェック：</strong>週次でレセプトコードの新旧対照チェック（事務長担当）。
+    </div>
+  </div>
+  <div class="card risk-card reveal">
+    <div class="risk-header">
+      <div class="risk-level risk-high"></div>
+      <span class="tag tag-high">高</span>
+      <div class="risk-title">歯科訪問診療の区分誤り</div>
+    </div>
+    <div class="risk-content">
+      <strong>予防策：</strong>訪問先の同一建物居住者人数の正確な記録。訪問診療4・5の新基準を全Drに周知。<br>
+      <strong>チェック：</strong>日次で訪問記録の同一建物人数確認（院長＋事務長担当）。
+    </div>
+  </div>
+  <!-- Mid Risk -->
+  <div class="card risk-card reveal">
+    <div class="risk-header">
+      <div class="risk-level risk-mid"></div>
+      <span class="tag tag-mid">中</span>
+      <div class="risk-title">口管強の施設基準未充足</div>
+    </div>
+    <div class="risk-content">
+      <strong>予防策：</strong>新基準の要件を一覧化し、四半期ごとに充足状況を確認。研修受講記録の管理。
+    </div>
+  </div>
+  <div class="card risk-card reveal">
+    <div class="risk-header">
+      <div class="risk-level risk-mid"></div>
+      <span class="tag tag-mid">中</span>
+      <div class="risk-title">光学印象の算定要件逸脱</div>
+    </div>
+    <div class="risk-content">
+      <strong>予防策：</strong>施設基準届出確認。CAD/CAM冠への適用開始時にDr全員に周知。週次で算定件数と装置の対照。
+    </div>
+  </div>
+  <div class="card risk-card reveal">
+    <div class="risk-header">
+      <div class="risk-level risk-mid"></div>
+      <span class="tag tag-mid">中</span>
+      <div class="risk-title">義歯クラスプのパラ使用理由未記載（要件確定後）</div>
+    </div>
+    <div class="risk-content">
+      <strong>予防策：</strong>要件確定後に金銀パラジウム合金使用時の診療録記載テンプレートを整備。日次で記載確認。
+    </div>
+  </div>
+  <div class="card risk-card reveal">
+    <div class="risk-header">
+      <div class="risk-level risk-low"></div>
+      <span class="tag tag-low">低</span>
+      <div class="risk-title">歯科技工所ベースアップ支援料の委託先確認不備</div>
+    </div>
+    <div class="risk-content">
+      <strong>予防策：</strong>委託先技工所の賃上げ実施を証明する書面の取得。半年ごとに証明書の更新確認。
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 9: FORECAST ===== -->
+<section class="section" id="forecast">
+  <div class="section-header reveal">
+    <div class="section-num">SECTION 09</div>
+    <h2 class="section-title">歯科業界の未来予測 2026年〜2030年</h2>
+    <p class="section-desc">
+      経済財政運営と改革の基本方針2025（令和7年6月13日 閣議決定）の政策方針をベースに、7つの観点それぞれを「メインシナリオ」「追い風シナリオ」「逆風シナリオ」の3段階で予測。
+    </p>
+  </div>
+
+  <div class="forecast-grid">
+    <div class="card forecast-card reveal">
+      <div class="forecast-icon">👥</div>
+      <div class="forecast-title">需給バランス</div>
+      <div class="forecast-scenarios">
+        <div class="fs-row fs-base"><div class="fs-label">メイン</div>85歳以上人口増＋国民皆歯科健診の段階実施で歯科需要は底堅い。医院数は年1%程度の純減が継続し、1医院あたりの患者数は微増</div>
+        <div class="fs-row fs-up"><div class="fs-label">追い風</div>生涯を通じた歯科健診の法制化が実現し、職域健診への歯科導入で新患が年5〜10%増加</div>
+        <div class="fs-row fs-down"><div class="fs-label">逆風</div>人口減少が加速する地方で閉院ラッシュ。都市部への集中が進み地域格差が拡大</div>
+      </div>
+    </div>
+    <div class="card forecast-card reveal">
+      <div class="forecast-icon">🩺</div>
+      <div class="forecast-title">人材確保・処遇改善</div>
+      <div class="forecast-scenarios">
+        <div class="fs-row fs-base"><div class="fs-label">メイン</div>骨太方針の「コストカット型からの転換」により公定価格引き上げが継続。ベースアップ評価料の拡充で歯科衛生士・技工士の賃上げが定着</div>
+        <div class="fs-row fs-up"><div class="fs-label">追い風</div>実質賃金年1%上昇の政府目標が達成され、他産業との格差が縮小。離職率が大幅低下</div>
+        <div class="fs-row fs-down"><div class="fs-label">逆風</div>春闘賃上げ率5%超の他産業に追いつけず、DH・技工士の他業種流出が加速</div>
+      </div>
+    </div>
+    <div class="card forecast-card reveal">
+      <div class="forecast-icon">🤖</div>
+      <div class="forecast-title">医療DX・ICT</div>
+      <div class="forecast-scenarios">
+        <div class="fs-row fs-base"><div class="fs-label">メイン</div>マイナ保険証の本格運用、電子カルテ情報共有サービスの普及が加速。口腔内スキャナー普及率50%超。標準型電子カルテの導入が開始</div>
+        <div class="fs-row fs-up"><div class="fs-label">追い風</div>AI画像診断の保険収載（2028年前後）、AIレセプトチェック普及で事務負担が半減。生産性が飛躍的に向上</div>
+        <div class="fs-row fs-down"><div class="fs-label">逆風</div>DX投資コスト負担に耐えられない中小医院の淘汰が進行</div>
+      </div>
+    </div>
+    <div class="card forecast-card reveal">
+      <div class="forecast-icon">🏥</div>
+      <div class="forecast-title">医科歯科連携・多職種連携</div>
+      <div class="forecast-scenarios">
+        <div class="fs-row fs-base"><div class="fs-label">メイン</div>骨太方針で「医歯薬連携などの多職種連携」が明記。糖尿病・歯周病の連携管理が診療報酬で本格評価され、連携実績がかかりつけ機能の要件化</div>
+        <div class="fs-row fs-up"><div class="fs-label">追い風</div>全国医療情報プラットフォーム上での医科歯科データ共有が実現。歯科が地域包括ケアの中核ポジションを確立</div>
+        <div class="fs-row fs-down"><div class="fs-label">逆風</div>歯科側の連携参加率が低迷し、医科主導の体制から周縁化</div>
+      </div>
+    </div>
+    <div class="card forecast-card reveal">
+      <div class="forecast-icon">🏠</div>
+      <div class="forecast-title">訪問歯科・在宅医療</div>
+      <div class="forecast-scenarios">
+        <div class="fs-row fs-base"><div class="fs-label">メイン</div>2040年に向け85歳以上人口がピークを迎える過程で需要は年5%以上成長。新地域医療構想のもと在宅歯科の位置付けが強化</div>
+        <div class="fs-row fs-up"><div class="fs-label">追い風</div>在宅歯科医療情報連携指導料等の新設加算が奏功し、1件あたり単価と件数が大幅増</div>
+        <div class="fs-row fs-down"><div class="fs-label">逆風</div>訪問先確保の競合激化、移動コスト増で収益性悪化。区分細分化による実質減点の影響</div>
+      </div>
+    </div>
+    <div class="card forecast-card reveal">
+      <div class="forecast-icon">💰</div>
+      <div class="forecast-title">コスト構造・材料費</div>
+      <div class="forecast-scenarios">
+      <div class="fs-row fs-base"><div class="fs-label">メイン</div>骨太方針の「物価上昇に合わせた公的制度の点検・見直し」により物価対応料の段階引き上げが継続。コバルトクロム・レジン系への移行が進む見込み</div>
+      <div class="fs-row fs-up"><div class="fs-label">追い風</div>金パラ離脱が進みコスト安定化。デジタル技工の普及で材料・外注費が最適化</div>
+        <div class="fs-row fs-down"><div class="fs-label">逆風</div>円安・原材料高騰継続、賃上げコスト増が物価対応料の増収を相殺</div>
+      </div>
+    </div>
+    <div class="card forecast-card reveal">
+      <div class="forecast-icon">🦷</div>
+      <div class="forecast-title">予防・口腔健康管理</div>
+      <div class="forecast-scenarios">
+        <div class="fs-row fs-base"><div class="fs-label">メイン</div>「オーラルフレイル対策・疾病の重症化予防」が国策化。口腔機能管理を中心とした予防型歯科が標準モデルに移行</div>
+        <div class="fs-row fs-up"><div class="fs-label">追い風</div>国民皆歯科健診の法制化＋ヘルスケア産業80兆円目標（2050年）の追い風で、予防歯科市場が飛躍的に拡大</div>
+        <div class="fs-row fs-down"><div class="fs-label">逆風</div>景気低迷による受診控え拡大。高額療養費見直し等で患者の自己負担増が予防受診を抑制</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI Monitor -->
+  <h3 style="font-weight:700; font-size:16px; color:var(--navy); margin:40px 0 16px;" class="reveal">毎月モニタリングすべき先行指標</h3>
+  <div class="kpi-grid reveal">
+    <div class="kpi-item"><div class="kpi-num">01</div><div class="kpi-text"><div class="kpi-name">月間レセプト件数・点数</div><div class="kpi-method">レセコンデータ</div></div></div>
+    <div class="kpi-item"><div class="kpi-num">02</div><div class="kpi-text"><div class="kpi-name">口腔機能管理料の算定率</div><div class="kpi-method">対保険患者比</div></div></div>
+    <div class="kpi-item"><div class="kpi-num">03</div><div class="kpi-text"><div class="kpi-name">ベースアップ収入額 vs 賃上げ支出額</div><div class="kpi-method">給与台帳×レセコン</div></div></div>
+    <div class="kpi-item"><div class="kpi-num">04</div><div class="kpi-text"><div class="kpi-name">返戻率・査定率</div><div class="kpi-method">レセプト請求結果</div></div></div>
+    <div class="kpi-item"><div class="kpi-num">05</div><div class="kpi-text"><div class="kpi-name">DH 1名あたり算定件数</div><div class="kpi-method">レセコンデータ</div></div></div>
+    <div class="kpi-item"><div class="kpi-num">06</div><div class="kpi-text"><div class="kpi-name">新患数・紹介患者数</div><div class="kpi-method">予約台帳</div></div></div>
+    <div class="kpi-item"><div class="kpi-num">07</div><div class="kpi-text"><div class="kpi-name">歯科用貴金属価格</div><div class="kpi-method">厚労省HP（随時改定）</div></div></div>
+    <div class="kpi-item"><div class="kpi-num">08</div><div class="kpi-text"><div class="kpi-name">疑義解釈の発出状況</div><div class="kpi-method">厚労省HP</div></div></div>
+    <div class="kpi-item"><div class="kpi-num">09</div><div class="kpi-text"><div class="kpi-name">DH・技工士の有効求人倍率</div><div class="kpi-method">ハローワーク統計</div></div></div>
+    <div class="kpi-item"><div class="kpi-num">10</div><div class="kpi-text"><div class="kpi-name">中医協議事録（R9改定への布石）</div><div class="kpi-method">厚労省HP</div></div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 10-11: CHECKLIST ===== -->
+<section class="section" id="checklist">
+  <div class="section-header reveal">
+    <div class="section-num">SECTION 10–11</div>
+    <h2 class="section-title">チェックリスト</h2>
+    <p class="section-desc">
+      院長・事務長それぞれのチェック項目をインタラクティブに確認できます。クリックでチェックを付けられます。
+    </p>
+  </div>
+
+  <div class="tab-container reveal">
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="tab-cl-director">🏥 院長用（16項目）</button>
+      <button class="tab-btn" data-tab="tab-cl-admin">📋 事務長用（23項目）</button>
+    </div>
+
+    <!-- Director Checklist -->
+    <div class="tab-panel active" id="tab-cl-director">
+      <div class="checklist-grid">
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">答申書（歯科部分）を通読した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">経営方針（保守/標準/積極）を仮決定した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料の継続賃上げ要件を確認した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">賃上げ幅と対象職員を決裁した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口腔内スキャナー導入の投資判断を行った</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口腔機能管理料の算定体制を確認した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口管強の新施設基準を満たせるか確認した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">自費メニュー戦略の見直し方針を決めた</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">訪問歯科の体制・方針を見直した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">外部連携先への連絡方針を決めた</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">設備投資の予算を承認した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">患者説明方針を承認した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">DH・スタッフの採用計画を見直した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">R9年度ベースアップ2倍化に向けた中期計画に着手した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">回復期口腔管理への参入可否を検討した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">歯科技工所との連携方針を確認した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+      </div>
+    </div>
+
+    <!-- Admin Checklist -->
+    <div class="tab-panel" id="tab-cl-admin">
+      <div class="checklist-grid">
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">答申書の歯科関連部分を要約し院長に報告した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料の計算支援ツールでシミュレーションした</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">レセコンベンダーに改定対応スケジュールを確認した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">告示・通知を入手し新旧対照表を作成した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">SPT→歯周病継続支援治療の移行マニュアルを作成した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">施設基準届出書類の準備を開始した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">スタッフ勉強会の日程を調整した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">算定漏れ防止チェックリストを作成・配布した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">レセコンのマスター更新テストを実施した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">患者向け説明資料・掲示物を作成した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料の届出書類を作成し院長承認を得た</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">施設基準の届出を厚生局に提出した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口腔機能管理料の算定フローを整備した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">技工所ベースアップ支援料の委託先確認を行った</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">パラ使用時の診療録記載テンプレートを整備した（要件確定後）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">光学印象の施設基準届出状況を確認した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">訪問歯科の区分4・5の運用ルールを整備した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">6月分レセプトの全件チェック体制を構築した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ賃金改善実績報告のスケジュールを把握した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">疑義解釈のフォロー体制を構築した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">返戻/査定分析の月次レポートフォーマットを作成した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">監査対応用の帳票一覧を作成・整備した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">中医協議事録のウォッチ体制を構築した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 12: REFERENCES ===== -->
+<section class="section" id="references">
+  <div class="section-header reveal">
+    <div class="section-num">SECTION 12</div>
+    <h2 class="section-title">参考資料（厚生労働省公式）</h2>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table class="comp-table" style="min-width:600px;">
+      <thead>
+        <tr>
+          <th>タイトル</th>
+          <th>確認日</th>
+          <th>用途</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00045.html" target="_blank" style="color:var(--blue);text-decoration:underline;">令和6年度診療報酬改定について</a></td>
+          <td>2026-02-21</td>
+          <td>R6改定の告示・通知・疑義解釈</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.mhlw.go.jp/stf/newpage_70414.html" target="_blank" style="color:var(--blue);text-decoration:underline;">中医協 総会（第647回）資料</a></td>
+          <td>2026-02-21</td>
+          <td>R8改定の答申書・個別改定項目</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.mhlw.go.jp/stf/newpage_67942.html" target="_blank" style="color:var(--blue);text-decoration:underline;">令和8年度診療報酬改定について（改定率）</a></td>
+          <td>2026-02-21</td>
+          <td>改定率の閣議決定</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.mhlw.go.jp/content/10808000/001655177.pdf" target="_blank" style="color:var(--blue);text-decoration:underline;">答申書（令和8年度）PDF</a></td>
+          <td>2026-02-21</td>
+          <td>答申書本文・附帯意見</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.mhlw.go.jp/stf/shingi/shingi-chuo_128154.html" target="_blank" style="color:var(--blue);text-decoration:underline;">中医協 総会 議事一覧</a></td>
+          <td>2026-02-21</td>
+          <td>中医協総会の議事録・資料リンク</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.mhlw.go.jp/content/10808000/001639439.pdf" target="_blank" style="color:var(--blue);text-decoration:underline;">個別改定項目について PDF</a></td>
+          <td>2026-02-21</td>
+          <td>R8歯科個別改定項目の詳細</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== DETAIL MODALS ===== -->
+<div class="modal-overlay" id="modal-1">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-high">01 ─ 最大インパクト</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>ベースアップ評価料(Ⅰ)の大幅拡充</h3>
+      <div class="modal-subtitle">全患者に自動的に影響 ─ 月次収益インパクト最大の改定項目</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">点数比較</div>
+        <div class="modal-comparison">
+          <div class="modal-comp-col r6">
+            <div class="modal-comp-label">令和6年度</div>
+            <div class="modal-comp-value">初診 10点<br>再診 2点</div>
+            <div class="modal-comp-note">対象：看護職員その他の医療関係職種</div>
+          </div>
+          <div class="modal-comp-col arrow">→</div>
+          <div class="modal-comp-col r8">
+            <div class="modal-comp-label">令和8年度（答申）</div>
+            <div class="modal-comp-value">初診 21点<br>再診 4点</div>
+            <div class="modal-comp-note">継続賃上げ実施医院：初診 31点 / 再診 6点</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">月次収益インパクト（モデル医院 ユニット4台）</div>
+        <div class="modal-kpi-grid">
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+3,300円</div><div class="modal-kpi-label">初診(通常)30件</div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+13,400円</div><div class="modal-kpi-label">再診(通常)670件</div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+6,300円</div><div class="modal-kpi-label">初診(継続)30件</div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+26,800円</div><div class="modal-kpi-label">再診(継続)670件</div></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">主な変更点</div>
+        <div class="modal-prose">
+          <p>対象職員が「看護職員その他の医療関係職種」から<strong>「当該医療機関に勤務する職員」</strong>に拡大。事務職員・歯科技工士等も明確に包含されるようになった。</p>
+          <p>継続賃上げを実施する医院は高い点数を算定可能とする<strong>新たな差別化制度</strong>が導入。届出・報告義務が追加される。</p>
+          <p><strong>R9年6月以降はさらに2倍</strong>になるため、2年間で段階的に収益インパクトが拡大する構成。中期経営計画への反映が必須。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">院長のアクション</div>
+        <ul class="modal-checklist">
+          <li>継続賃上げ要件を満たせるか、現在の給与総額を確認（14日以内）</li>
+          <li>賃上げ幅・対象職員の範囲を決裁（14日以内）</li>
+          <li>ベースアップ計算支援ツール（厚労省Excel）で届出区分をシミュレーション</li>
+          <li>R9年度のベースアップ2倍化に向けた賃上げ原資の確保計画を策定（180日以内）</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">査定・監査リスク</div>
+        <div class="modal-impact-box">
+          <div class="modal-impact-icon">⚠️</div>
+          <div class="modal-impact-text">
+            <span class="modal-risk-tag high">高</span>
+            <strong>賃金改善未達リスク</strong>：ベースアップ収入額と賃上げ支出額の月次突合が必須。給与支払額とベースアップ収入額の対照表を作成し、乖離があれば即座に是正する体制を構築すること。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-2">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-high">03 ─ 管理型歯科への転換</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>口腔機能管理料の増点・再編</h3>
+      <div class="modal-subtitle">「管理する歯科」への転換を促す最大級インセンティブ</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">点数比較</div>
+        <div class="modal-comparison">
+          <div class="modal-comp-col r6">
+            <div class="modal-comp-label">令和6年度</div>
+            <div class="modal-comp-value">60点</div>
+            <div class="modal-comp-note">口腔機能管理料（一律）</div>
+          </div>
+          <div class="modal-comp-col arrow">→</div>
+          <div class="modal-comp-col r8">
+            <div class="modal-comp-label">令和8年度（答申）</div>
+            <div class="modal-comp-value">管理料1: 90点<br>管理料2: 50点（新設）</div>
+            <div class="modal-comp-note">管理料1は+30点/人、管理料2は要件緩和版</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">月次収益インパクト</div>
+        <div class="modal-kpi-grid">
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+24,000円</div><div class="modal-kpi-label">管理料1 80件算定時</div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+288,000円</div><div class="modal-kpi-label">年間インパクト</div></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">主な変更点</div>
+        <div class="modal-prose">
+          <p>口腔機能管理料が2段階に再編。上位の管理料1（90点）は口腔機能評価（舌圧検査等）の実施と管理計画書の作成が前提条件。下位の管理料2（50点）は従来の要件に近い。</p>
+          <p>口管強の新施設基準（項目08参照）でも口腔機能管理の実績が要件に追加されており、<strong>「管理する歯科」への転換が全面的に求められている</strong>改定構造。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">院長のアクション</div>
+        <ul class="modal-checklist">
+          <li>口腔機能管理料の算定体制（DH配置・検査機器）を確認</li>
+          <li>舌圧測定器等の口腔機能検査機器の購入決裁（90日以内）</li>
+          <li>DH1名あたり管理患者数の目標設定</li>
+          <li>口腔機能管理の算定フロー（検査→計画→管理→指導）を整備</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">査定・監査リスク</div>
+        <div class="modal-impact-box">
+          <div class="modal-impact-icon">⚠️</div>
+          <div class="modal-impact-text">
+            <span class="modal-risk-tag high">高</span>
+            <strong>算定要件逸脱リスク</strong>：口腔機能評価の実施記録を診療録に必ず記載。管理計画書のテンプレート化と日次チェック体制が必須。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-3">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-high">06 ─ 運用変更最大</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>SPT・P重防の一本化</h3>
+      <div class="modal-subtitle">「歯周病継続支援治療」への統合 ─ レセコン全面改修が必須</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">制度比較</div>
+        <div class="modal-comparison">
+          <div class="modal-comp-col r6">
+            <div class="modal-comp-label">令和6年度</div>
+            <div class="modal-comp-value">SPT + P重防</div>
+            <div class="modal-comp-note">歯周病安定期治療と歯周病重症化予防治療が別建て</div>
+          </div>
+          <div class="modal-comp-col arrow">→</div>
+          <div class="modal-comp-col r8">
+            <div class="modal-comp-label">令和8年度（答申）</div>
+            <div class="modal-comp-value">歯周病継続<br>支援治療</div>
+            <div class="modal-comp-note">一本化。歯数区分（10歯未満/10-20/20歯以上）で点数設定</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">推定点数（答申ベース）</div>
+        <div class="modal-kpi-grid">
+          <div class="modal-kpi-item"><div class="modal-kpi-value">170点</div><div class="modal-kpi-label">1-10歯未満</div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">200点</div><div class="modal-kpi-label">10-20歯未満</div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">350点</div><div class="modal-kpi-label">20歯以上</div></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">主な変更点</div>
+        <div class="modal-prose">
+          <p>SPT（歯周病安定期治療）とP重防（歯周病重症化予防治療）を「歯周病継続支援治療」に統合。算定区分の名称・コードが全面変更されるため、レセコンマスターの改修が最大規模となる。</p>
+          <p>移行期に旧コードで請求するとレセプト返戻が発生するため、<strong>SPT→歯周病継続支援治療の移行マニュアル作成</strong>が60日以内の最重要タスク。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">事務長のアクション</div>
+        <ul class="modal-checklist">
+          <li>レセコンベンダーへ改定対応スケジュール確認（14日以内）</li>
+          <li>SPT→歯周病継続支援治療の移行マニュアル作成（60日以内）</li>
+          <li>レセコンのマスター更新テスト実施（60日以内）</li>
+          <li>スタッフ勉強会で新算定ルールを全職種に周知（90日以内）</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">査定・監査リスク</div>
+        <div class="modal-impact-box">
+          <div class="modal-impact-icon">⚠️</div>
+          <div class="modal-impact-text">
+            <span class="modal-risk-tag high">高</span>
+            <strong>移行期エラーリスク</strong>：旧コードでの請求がないかレセプト全件チェック。移行期専用チェックリストを運用し、週次でレセプトコードの新旧対照チェックを実施すること。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-4">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-high">02 ─ 全患者に波及</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>初診料・再診料の底上げ + 物価対応料</h3>
+      <div class="modal-subtitle">基本診療料の引き上げと物価高騰対応の新設加算</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">点数比較</div>
+        <div class="modal-comparison">
+          <div class="modal-comp-col r6">
+            <div class="modal-comp-label">令和6年度</div>
+            <div class="modal-comp-value">初診 267点<br>再診 58点</div>
+            <div class="modal-comp-note">物価対応料なし</div>
+          </div>
+          <div class="modal-comp-col arrow">→</div>
+          <div class="modal-comp-col r8">
+            <div class="modal-comp-label">令和8年度（答申）</div>
+            <div class="modal-comp-value">初診 272点<br>再診 59点</div>
+            <div class="modal-comp-note">+ 物価対応料（初診3点・再診1点）</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">月次収益インパクト</div>
+        <div class="modal-kpi-grid">
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+1,500円</div><div class="modal-kpi-label">初診料増点 30件</div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+6,700円</div><div class="modal-kpi-label">再診料増点 670件</div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+900円</div><div class="modal-kpi-label">物価対応料(初診)30件</div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+6,700円</div><div class="modal-kpi-label">物価対応料(再診)670件</div></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">主な変更点</div>
+        <div class="modal-prose">
+          <p>初診料は+5点（267→272点）、再診料は+1点（58→59点）の底上げ。これに加え<strong>物価対応料が新設</strong>され、初診時3点・再診時1点が加算可能。</p>
+          <p><strong>R9年6月以降は物価対応料が2倍</strong>（初診6点・再診2点）に自動引き上げ。届出不要で全患者に自動適用されるため、確実な収益増となる。</p>
+          <p>物価対応料は「準スライド制」の先駆けとなる制度。従来の2年ごとの中医協審議を経ない自動引き上げメカニズムであり、今後の改定制度設計への影響も大きい。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">注意事項</div>
+        <ul class="modal-checklist">
+          <li>物価対応料の届出要否を告示で確認（3月発出後）</li>
+          <li>窓口負担変更の患者説明方針を決定（75日以内）</li>
+          <li>掲示物の更新準備（初再診料＋物価対応料の合計変更を記載）</li>
+          <li>レセコンでの物価対応料の自動反映をベンダーに確認</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-5">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-mid">08 ─ 投資判断直結</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>光学印象の増点・対象拡大</h3>
+      <div class="modal-subtitle">口腔内スキャナー導入の経営判断に直結する改定</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">点数比較</div>
+        <div class="modal-comparison">
+          <div class="modal-comp-col r6">
+            <div class="modal-comp-label">令和6年度</div>
+            <div class="modal-comp-value">100点</div>
+            <div class="modal-comp-note">CAD/CAMインレーのみ</div>
+          </div>
+          <div class="modal-comp-col arrow">→</div>
+          <div class="modal-comp-col r8">
+            <div class="modal-comp-label">令和8年度（答申）</div>
+            <div class="modal-comp-value">150点</div>
+            <div class="modal-comp-note">CAD/CAMインレー＋CAD/CAM冠に拡大</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">月次収益インパクト</div>
+        <div class="modal-kpi-grid">
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+5,000円</div><div class="modal-kpi-label">月10件算定時</div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+60,000円</div><div class="modal-kpi-label">年間インパクト</div></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">主な変更点</div>
+        <div class="modal-prose">
+          <p>光学印象の点数が100点→150点に+50%増点。さらに対象がCAD/CAMインレーのみからCAD/CAM冠にも拡大され、<strong>対象症例が大幅に増加</strong>。</p>
+          <p>口腔内スキャナー未導入の医院にとっては、この改定を機に導入判断を行う絶好のタイミング。ROI試算では、月間算定件数10件で年間約60,000円の増収、20件では約120,000円。機器価格との損益分岐を検討すべき。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">院長のアクション</div>
+        <ul class="modal-checklist">
+          <li>口腔内スキャナー導入の投資判断（可否・機種選定・予算承認）を30日以内に</li>
+          <li>月間見込み算定件数とROI試算を作成</li>
+          <li>デジタル印象採得装置の施設基準届出確認</li>
+          <li>CAD/CAM冠への適用開始時にDr全員に周知</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-6">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-mid">04 ─ 新設項目</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>口腔機能実地指導料の新設</h3>
+      <div class="modal-subtitle">歯科医師の指示のもと、歯科衛生士が実地指導を行う場合に新設</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">点数</div>
+        <div class="modal-kpi-grid">
+          <div class="modal-kpi-item"><div class="modal-kpi-value">46点</div><div class="modal-kpi-label">新設</div></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">主なポイント</div>
+        <div class="modal-prose">
+          <p>口腔機能管理の算定拡大と連動し、歯科衛生士の実地指導が評価対象として新設された。</p>
+          <p>口腔機能管理料との一体運用で算定機会が増えるため、DH配置と指導フローの整備が重要。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">院長のアクション</div>
+        <ul class="modal-checklist">
+          <li>歯科医師の指示フローとDHの実地指導手順を整備</li>
+          <li>指導記録テンプレートを作成し、日次で記載チェック</li>
+          <li>口腔機能管理の算定患者を対象に運用を設計</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-7">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-mid">05 ─ 減点インパクト</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>歯科疾患管理料の減点（100→90点）</h3>
+      <div class="modal-subtitle">口腔機能管理へのシフトを促すマイナス改定</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">点数比較</div>
+        <div class="modal-comparison">
+          <div class="modal-comp-col r6">
+            <div class="modal-comp-label">令和6年度</div>
+            <div class="modal-comp-value">100点</div>
+            <div class="modal-comp-note">歯科疾患管理料</div>
+          </div>
+          <div class="modal-comp-col arrow">→</div>
+          <div class="modal-comp-col r8">
+            <div class="modal-comp-label">令和8年度（答申）</div>
+            <div class="modal-comp-value">90点</div>
+            <div class="modal-comp-note">-10点/人</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">影響の考え方</div>
+        <div class="modal-prose">
+          <p>口腔機能管理料・口腔機能実地指導料の算定がない場合は<strong>実質減点</strong>となる構造。口腔機能管理への移行を促す設計。</p>
+          <p><strong>例：</strong>患者100人で歯科疾患管理料のみを算定すると年▲12万円相当（-10点×100人×12か月）。口腔機能管理（90点）と実地指導料（46点）を算定できれば、年+79.2万円相当の上積みとなる。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">院長のアクション</div>
+        <ul class="modal-checklist">
+          <li>口腔機能管理・実地指導の算定対象患者を抽出</li>
+          <li>DH体制と検査機器の整備計画を作成</li>
+          <li>疾患管理料のみ算定の患者比率を月次で可視化</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-8">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-mid">10 ─ 施設基準変更</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>口腔管理体制強化加算（口管強）の算定メリット</h3>
+      <div class="modal-subtitle">管理料・歯周病治療・在宅の各場面で評価が拡充</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">算定メリット（管理料・評価加算）</div>
+        <div class="modal-kpi-grid">
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+50点</div><div class="modal-kpi-label">小児口腔機能管理料<br><small>基本90点（旧60点）に加算</small></div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+50点</div><div class="modal-kpi-label">口腔機能管理料1<br><small>基本90点（旧60点）に加算</small></div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">+48点</div><div class="modal-kpi-label">根面う蝕管理料<br><small>基本30点に加算</small></div></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">R8改定ポイント</div>
+        <div class="modal-impact-box">
+          <div class="modal-impact-icon">⚠</div>
+          <div class="modal-impact-text">
+            口管強の加算点数（+50点、+48点）自体はR6から据え置きの見込みだが、<strong>基本点数が大幅に変動</strong>。小児口腔機能管理料・口腔機能管理料1は60点→90点に+30点。一方、歯科疾患管理料は100点→90点に-10点。口腔機能管理を算定しなければ純減になるため注意。<br>
+            ※加算点数の最終確定は2026年3月の告示・通知で確定。
+          </div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">管理料比較（口管強届出医院）</div>
+        <div class="table-wrap">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th>R6（現行）</th>
+                <th>R8（改定後）</th>
+                <th>増減</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>歯科疾患管理料（歯管）</td>
+                <td>100点</td>
+                <td>90点</td>
+                <td class="cell-change cell-down">-10点</td>
+              </tr>
+              <tr>
+                <td>小児口腔機能管理料＋口管強加算</td>
+                <td>60+50=110点</td>
+                <td>90+50=140点</td>
+                <td class="cell-change cell-up">+30点</td>
+              </tr>
+              <tr>
+                <td>口腔機能管理料1＋口管強加算</td>
+                <td>60+50=110点</td>
+                <td>90+50=140点</td>
+                <td class="cell-change cell-up">+30点</td>
+              </tr>
+              <tr>
+                <td>根面う蝕管理料＋口管強加算</td>
+                <td>30+48=78点</td>
+                <td>30+48=78点</td>
+                <td class="cell-change">±0</td>
+              </tr>
+              <tr>
+                <td>エナメル質初期う蝕管理料＋口管強加算</td>
+                <td>30+48=78点</td>
+                <td>30+48=78点</td>
+                <td class="cell-change">±0</td>
+              </tr>
+              <tr>
+                <td>口腔機能実地指導料（新設）</td>
+                <td>—</td>
+                <td>46点</td>
+                <td class="cell-change cell-up">+46点</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">歯周病治療の再編（SPT統合）</div>
+        <div class="modal-prose">
+          <p>R8改定でSPT（歯周病安定期治療）とP重防（歯周病重症化予防治療）が<strong>「歯周病継続支援治療」</strong>に一本化。口管強届出医院の長期管理加算（120点）等の取り扱いは3月告示で確定。</p>
+        </div>
+        <div class="modal-impact-box new">
+          <div class="modal-impact-icon">💡</div>
+          <div class="modal-impact-text">
+            <strong>新設：重症化予防連携強化加算 100点</strong><br>
+            医科（内科等）からの紹介に基づき糖尿病患者等に歯周病治療を実施し、診療情報を提供した場合に算定可能。医科歯科連携が直接的な加算項目として制度化。
+          </div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">在宅・連携での上乗せ</div>
+        <div class="modal-prose">
+          <p><strong>歯科訪問診療移行加算：</strong>口管強の届出機関は<strong>150点</strong>（一般は100点）を算定可能。R6で訪問診療1の20分要件が廃止され、算定機会が拡大。</p>
+          <p><strong>訪問口腔リハビリテーション指導管理料：</strong>在宅・小児在宅で<strong>75点の加算</strong>が適用。</p>
+          <p><strong>歯科訪問診療補助加算：</strong>口管強の場合、同一建物居住者以外は115点、同一建物居住者は50点（一般はそれぞれ90点、30点）。</p>
+        </div>
+        <div class="modal-impact-box">
+          <div class="modal-impact-icon">⚠</div>
+          <div class="modal-impact-text">
+            <strong>R8改定注意点：</strong>訪問歯科衛生指導料は単一建物10人以上の区分で-35点/人の減収。施設規模に応じた収支シミュレーションが必要。一方、在宅療養支援歯科診療所の施設基準が細分化され、上位区分（加算1：100点）への届出機会が広がった。
+          </div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">参照基準としての位置付け</div>
+        <div class="modal-prose">
+          <p>点数表の複数の加算で「小児口腔機能管理料の<strong>注3</strong>に規定する施設基準（＝口管強）」が参照され、質の高い口腔管理の公的な証明として位置付けられている。R8改定では口腔機能管理料が1（90点）と2（50点）に再編されるなど、体系全体が「管理する歯科」への転換を促す構造に移行。</p>
+        </div>
+        <div class="modal-impact-box">
+          <div class="modal-impact-icon">⚠</div>
+          <div class="modal-impact-text">
+            <strong>旧資料の誤記修正：</strong>口管強の根拠規定は「注5」ではなく「<strong>注3</strong>」。注5は情報通信機器を用いた管理に関する規定であり、別内容。
+          </div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">月次収支シミュレーション（口腔機能管理100名/月）</div>
+        <div class="modal-prose">
+          <p><strong>改定前（R6）：</strong>歯管100点 + 口機能管理60点 + 口管強50点 = <strong>210点/人</strong>（月間合計 21,000点）</p>
+          <p><strong>改定後（R8）：</strong>歯管90点 + 口機能管理1 90点 + 口管強50点 = <strong>230点/人</strong>。<br>
+          さらに口腔機能実地指導料（DH実施時）で<strong>+46点/人</strong>、月間合計 27,600点。<strong>月間増収額 +6,600点（+66,000円）</strong>。</p>
+          <p>※実地指導料は適切な研修を受講した歯科衛生士が実施した場合のみ算定可能。DH体制が整わない場合、増収は歯管-10点＋口機能管理+30点＝<strong>+20点/人</strong>に留まる。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">院長のアクション</div>
+        <ul class="modal-checklist">
+          <li>口腔機能管理の算定体制構築：歯科衛生士の研修受講状況を確認し、口腔機能実地指導料（46点）の算定開始に向けた院内フローを整備</li>
+          <li>SPT→歯周病継続支援治療への移行準備：レセコンのマスタ更新スケジュールをベンダーに確認し、カルテテンプレートを改訂</li>
+          <li>医科歯科連携ネットワークの構築：近隣の糖尿病内科に対し、重症化予防連携強化加算（100点）を活用した紹介スキームを提案</li>
+          <li>口管強の届出維持に必要な運用（管理料算定・記録）を標準化し、口腔機能管理の実績要件を月次でモニタリング</li>
+          <li>在宅・訪問の算定条件を再整理し、訪問歯科衛生指導料の施設規模別収支シミュレーションを実施</li>
+          <li>参照基準となる算定対象患者（口腔機能低下症・口腔機能発達不全症）を月次で可視化し、算定漏れを防止</li>
+          <li>2026年3月の告示・通知発出後、口管強加算点数の最終確定値を確認し、必要に応じて本資料を再更新</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-9">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-new">09 ─ 新設項目</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>周術期・回復期の口腔機能管理（新設）</h3>
+      <div class="modal-subtitle">計画策定料1/2の新設 ─ 病院連携の新たな収益源</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">新設点数（答申ベース）</div>
+        <div class="modal-kpi-grid">
+          <div class="modal-kpi-item"><div class="modal-kpi-value">300点</div><div class="modal-kpi-label">計画策定料1</div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">150点</div><div class="modal-kpi-label">計画策定料2</div></div>
+          <div class="modal-kpi-item"><div class="modal-kpi-value">300点</div><div class="modal-kpi-label">回復期等 計画策定料1</div></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">主な変更点</div>
+        <div class="modal-prose">
+          <p>周術期等・回復期等の口腔機能管理において、計画策定料1（300点）・計画策定料2（150点）が新設。</p>
+          <p>医科歯科連携・地域包括ケアの強化を示す改定の方向性に沿った項目で、近隣病院との連携体制構築が前提。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">院長のアクション</div>
+        <ul class="modal-checklist">
+          <li>回復期口腔管理への参入可否を90日以内に判断</li>
+          <li>近隣病院の回復期病棟情報を収集し連携先候補リストを作成</li>
+          <li>連携先病院との交渉を開始</li>
+          <li>DH配置計画（衛生処置実施体制）を検討</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">適性判断</div>
+        <div class="modal-impact-box new">
+          <div class="modal-impact-icon">💡</div>
+          <div class="modal-impact-text">
+            <strong>この項目は全医院向けではない。</strong>近隣に回復期リハ病棟を持つ病院があり、訪問歯科の体制が整っている医院が対象。病院連携実績のない医院が短期間で参入するのは現実的でない場合もある。既存の連携先がある場合は積極検討すべき。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-10">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-new">07 ─ 医科歯科連携</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>医科歯科連携の強化・新設評価</h3>
+      <div class="modal-subtitle">重症化予防連携強化加算（100点）を含む連携評価の新設・拡充</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">R6→R8 改定経緯</div>
+        <div class="modal-prose">
+          <p><strong>令和6年度（2024年）：</strong>周術期等口腔機能管理は手術患者が対象。糖尿病と歯周病の関連は学術的に確立されていたが、診療報酬上の連携評価は限定的だった。歯科疾患管理料のハイリスク加算（糖尿病）50点のみ。</p>
+          <p><strong>骨太方針2025（R7年6月閣議決定）：</strong>「糖尿病と歯周病との関係など全身の健康と口腔の健康に関するエビデンスの活用」「医歯薬連携などの多職種連携」が明記。医科歯科連携が<strong>国の政策方針</strong>として明確に位置付けられた。</p>
+          <p><strong>令和8年度（2026年）：</strong>糖尿病患者等の紹介に基づく歯周治療と情報提供を評価する<strong>重症化予防連携強化加算（100点）</strong>が新設。周術期等・回復期等の口腔機能管理の新設（Top10の09）と合わせ、医科歯科連携の評価が大幅に拡充。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">骨太方針2025の歯科関連記載（抜粋）</div>
+        <div class="modal-prose">
+          <p>「糖尿病と歯周病との関係など全身の健康と口腔の健康に関するエビデンスの活用、生涯を通じた歯科健診（いわゆる国民皆歯科健診）に向けた具体的な取組、オーラルフレイル対策・疾病の重症化予防につながる歯科専門職による口腔健康管理の充実、歯科医療機関・<strong>医歯薬連携などの多職種連携</strong>」 ─ 閣議決定文より</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">新設点数</div>
+        <div class="modal-kpi-grid">
+          <div class="modal-kpi-item"><div class="modal-kpi-value">100点</div><div class="modal-kpi-label">重症化予防連携強化加算</div></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">解説ポイント</div>
+        <div class="modal-prose">
+          <p><strong>かかりつけ機能との連動：</strong>口管強の施設基準見直しで、医科歯科連携の実績が上位基準の要件に追加される見込み。連携実績のない医院は施設基準を満たせなくなる構造。</p>
+          <p><strong>「生活習慣性歯周病」の新病名：</strong>糖尿病と歯周病の管理を一体的に評価する新病名の保険適用が次期以降の改定で予想される。今回の改定はその布石。</p>
+          <p><strong>実務上の準備：</strong>近隣の内科・整形外科・病院との連携体制構築が急務。紹介状テンプレート、情報共有シートの整備、ICT活用（電子カルテ情報共有サービス）への対応を進めるべき。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">アクションチェックリスト</div>
+        <ul class="modal-checklist">
+          <li>近隣医科医療機関とのパイプ構築（内科・整形外科・病院）</li>
+          <li>糖尿病患者への歯周病管理フローの院内整備</li>
+          <li>回復期等口腔機能管理の算定体制構築（Top10の09と連動）</li>
+          <li>電子カルテ情報共有サービスへの対応確認</li>
+          <li>歯科衛生士への生活習慣病連携研修の実施</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 03 DETAIL MODALS ===== -->
+<div class="modal-overlay" id="s3-modal-1">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-high">改定率</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>本体改定率 ─ +0.88%から+3.09%へ</h3>
+      <div class="modal-subtitle">30年ぶりの高水準。2年度平均の段階構成が新しい制度設計</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">R6→R8 改定経緯</div>
+        <div class="modal-prose">
+          <p><strong>令和6年度（2024年）：</strong>本体改定率+0.88%は、コロナ禍からの回復途上で財務省と厚労省の折衝が難航した結果。歯科は医科に比べ改定率が低く抑えられた歴史が続いていたが、R6で「医科との格差是正」の文言が初めて閣議決定に盛り込まれた。</p>
+          <p><strong>R6→R8の間（2024〜2025年）：</strong>物価高騰・人件費上昇が加速。2025年春闘で中小企業を含め過去30年で最高水準の賃上げが実現。医療・介護分野の賃上げ遅れが社会問題化し、2025年12月の予算編成で「医療従事者の賃上げ」が最重要テーマに浮上した。</p>
+          <p><strong>令和8年度（2026年）：</strong>本体+3.09%（2年度平均）は30年ぶりの高水準。R8年度+2.41%、R9年度+3.77%の<strong>段階構成</strong>という新しい制度設計が導入された。これは一度に大幅改定するのではなく、賃上げの継続性を担保するための枠組み。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">解説ポイント</div>
+        <div class="modal-prose">
+          <p><strong>なぜ「2年度平均」という表記か？</strong> ─ R8改定は2年間の診療報酬を一括で改定する設計。R8年度とR9年度で段階的に引き上げることで、医療機関の賃上げが翌年度以降も継続するインセンティブを内蔵している。</p>
+          <p><strong>歯科単独では？</strong> ─ 歯科の本体改定率内訳は答申書では明示されていないが、ベースアップ評価料の拡充幅や初再診料の底上げ幅から推測すると、歯科も医科に遜色ない水準と見られる。</p>
+          <p><strong>経営への含意：</strong> 改定率の高さは「取りに行く」改定を意味する。新設加算や施設基準の整備を能動的に進めた医院と、何もしなかった医院の収益格差が過去改定以上に広がる構造。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="s3-modal-2">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-high">賃上げ</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>ベースアップ評価料の対象職員 ─ 全勤務職員への拡大</h3>
+      <div class="modal-subtitle">歯科衛生士・事務職員・歯科技工士すべてが賃上げ対象に</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">R6→R8 改定経緯</div>
+        <div class="modal-prose">
+          <p><strong>令和6年度（2024年）：</strong>ベースアップ評価料が新設。ただし対象は「看護職員その他の医療関係職種」に限定。歯科医院では受付・事務職員が対象外となるケースがあり、「全職員で賃上げしたいのに制度が追いつかない」という現場の声が多数あった。</p>
+          <p><strong>R6→R8の間：</strong>中医協で「医療関係職種以外の職員の賃上げをどう促進するか」が繰り返し議題に。特に歯科では事務職員の離職率が高く、受付スタッフの確保が経営課題化していた。また歯科技工士の報酬水準の低さが技工士不足の根本原因との指摘が相次いだ。</p>
+          <p><strong>令和8年度（2026年）：</strong>対象が「当該医療機関に勤務する職員」に拡大。事務職員・歯科技工士等も明確に包含される形となった。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">解説ポイント</div>
+        <div class="modal-prose">
+          <p><strong>届出区分の再計算が必須：</strong>対象職員が増えるため、給与総額の基礎数値が変わる。R6で届け出た区分をそのまま使えない可能性が高い。厚労省のExcel計算支援ツールで速やかに再シミュレーションすべき。</p>
+          <p><strong>歯科技工所との関係：</strong>院内技工士は対象に含まれるが、外注先の技工所職員は別途「技工所ベースアップ支援料」で手当される設計。この二重構造を理解しておくこと。</p>
+          <p><strong>落とし穴：</strong>対象拡大で見かけの賃上げ率が下がる可能性がある。職員数が増えても総支出が変わらなければ、1人あたり賃上げ額が薄まる。ベースアップ収入増と賃上げ支出のバランスシートを毎月確認する体制が不可欠。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="s3-modal-3">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-high">賃上げ</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>賃上げ継続による差別化 ─ 新規概念の導入</h3>
+      <div class="modal-subtitle">「賃上げを続ける医院」と「しない医院」で点数が分かれる初の制度</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">R6→R8 改定経緯</div>
+        <div class="modal-prose">
+          <p><strong>令和6年度（2024年）：</strong>ベースアップ評価料は一律の点数設定。賃上げの継続性を担保する仕組みはなく、「1年だけ上げて翌年据え置き」という対応も制度上は可能だった。この構造的な問題が政府内で認識された。</p>
+          <p><strong>R6→R8の間：</strong>2025年の骨太の方針で「医療従事者の賃金を持続的に引き上げる仕組み」が明記。単年度の賃上げではなく、中長期的な処遇改善を診療報酬で後押しする方向性が確定した。中医協では「継続賃上げを実施する医療機関への追加評価」が議論され、具体的な制度設計が進められた。</p>
+          <p><strong>令和8年度（2026年）：</strong>継続賃上げを実施する医院は、初診31点・再診6点（通常の21点・4点に対し大幅加算）を算定可能に。医療機関の賃上げ姿勢を診療報酬で差別化する<strong>日本の医療制度史上初の仕組み</strong>が導入された。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">解説ポイント</div>
+        <div class="modal-prose">
+          <p><strong>「継続賃上げ」の定義：</strong>告示待ちだが、前年度比で一定率以上の賃上げを実施・継続していることを届出・報告する仕組みと推定される。具体的な率や証明方法は3月の告示で確定。</p>
+          <p><strong>初診21点 vs 31点の差：</strong>月間30件の初診で差額は3,000円/月。再診670件も含めると年間で約20万円の差。「取れるはずの点数を取れない」状態は経営上の機会損失。</p>
+          <p><strong>R9年度の2倍化が鍵：</strong>R9年6月以降はこの差がさらに倍に拡大する。今から継続賃上げの体制を整えておかないと、R9で大きな差がつく。中期経営計画への反映が必須。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="s3-modal-4">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-mid">施設基準</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>口管強（旧か強診）の名称・要件見直し</h3>
+      <div class="modal-subtitle">口腔機能管理の実績が必須要件に ─ 「管理する歯科」への転換を制度が強制</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">R6→R8 改定経緯</div>
+        <div class="modal-prose">
+          <p><strong>沿革：</strong>2016年（平成28年）に「かかりつけ歯科医機能強化型歯科診療所（か強診）」として新設。SPT・フッ化物塗布等の予防処置を保険算定できる上位施設基準として位置付けられた。</p>
+          <p><strong>令和6年度（2024年）：</strong>名称が<strong>口腔管理体制強化加算（口管強）</strong>へ変更され、施設基準も見直し。</p>
+          <p><strong>令和6年度（2024年）：</strong>要件の微修正はあったが、基本構造は維持。ただし中医協の附帯意見で「かかりつけ歯科医機能の評価のあり方について引き続き検討」と明記され、次回改定での抜本見直しが予告されていた。</p>
+          <p><strong>R6→R8の間：</strong>口腔機能低下症の診断・管理が歯科の新しい役割として社会的に認知拡大。厚労省の「歯科口腔保健の推進に関する基本的事項（第二次）」で、口腔機能管理の推進が国の施策として明確化された。</p>
+          <p><strong>令和8年度（2026年）：</strong>名称・要件を見直し、口腔機能管理の実績要件が追加。算定実績がないと上位施設基準を満たせない構造に変更。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">解説ポイント</div>
+        <div class="modal-prose">
+          <p><strong>連動する改定項目：</strong>口腔機能管理料の増点（Top10の03）、口腔機能実地指導料の新設（Top10の04）と三位一体の改定。口管強を維持・取得するには口腔機能管理の算定実績が必須になる。</p>
+          <p><strong>経過措置に注意：</strong>旧か強診の届出をしていた医院に対する経過措置期間は告示で確定するが、過去の例では6か月〜1年。この間に新要件を満たす体制構築が必要。</p>
+          <p><strong>検査機器の整備：</strong>口腔機能評価には舌圧測定器、咀嚼能力検査装置等が必要。機器未導入の医院は設備投資の判断を急ぐべき。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="s3-modal-5">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-high">歯周治療</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>SPT/P重防の一本化 ─ 「歯周病継続支援治療」へ</h3>
+      <div class="modal-subtitle">10年以上続いた二重構造が解消。レセコン・運用の全面改修が必要</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">R6→R8 改定経緯</div>
+        <div class="modal-prose">
+          <p><strong>SPTの歴史：</strong>SPT（Supportive Periodontal Therapy：歯周病安定期治療）は2008年（平成20年）に保険導入。歯周基本治療後の安定期に継続管理を行う算定区分として定着した。</p>
+          <p><strong>P重防の登場：</strong>2018年（平成30年）にP重防（歯周病重症化予防治療）が新設。SPTが「治療後」の管理であるのに対し、P重防は「重症化予防」に焦点を当てた区分。ただし現場ではSPTとP重防の使い分けが不明確で、算定ルールの複雑さが問題視されていた。</p>
+          <p><strong>令和6年度（2024年）：</strong>SPT・P重防は併存のまま。ただし中医協の議論で「体系の簡素化」が繰り返し求められていた。</p>
+          <p><strong>令和8年度（2026年）：</strong>SPTとP重防を「歯周病継続支援治療」に一本化。歯数区分（10歯未満/10-20歯未満/20歯以上）で点数を設定する簡素な体系に移行。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">解説ポイント</div>
+        <div class="modal-prose">
+          <p><strong>運用変更のインパクトが最大級：</strong>算定コード・名称が全面変更されるため、レセコンマスターの改修規模が今回の改定で最大。カルテテンプレート、算定フロー、スタッフ教育のすべてを刷新する必要がある。</p>
+          <p><strong>移行期の返戻リスク：</strong>6月施行直後に旧コードで請求すると即座に返戻。移行期専用のチェックリストを作成し、全スタッフに周知徹底すること。</p>
+          <p><strong>点数面の評価：</strong>一本化後の点数（170/200/350点）は、従来のSPT各区分と比較して概ね同水準〜微増と推定されるが、算定要件の詳細は告示待ち。P重防からの移行ケースでは算定額が変動する可能性がある。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="s3-modal-6">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-mid">感染対策</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>外来環の分離 ─ 感染対策と医療安全の二本立てへ</h3>
+      <div class="modal-subtitle">歯科外来診療環境体制加算の再編。両方取得で合計点数増の可能性</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">R6→R8 改定経緯</div>
+        <div class="modal-prose">
+          <p><strong>外来環の歴史：</strong>2010年（平成22年）に歯科外来診療環境体制加算（外来環）が新設。院内感染防止対策・救急対応体制・研修実施等を要件とする包括的な施設基準だった。</p>
+          <p><strong>コロナの影響：</strong>2020年以降、歯科の感染対策への社会的関心が急速に高まった。エアロゾル対策、口腔外バキュームの普及、個人防護具の標準化など、歯科特有の感染対策が進展した。</p>
+          <p><strong>令和6年度（2024年）：</strong>外来環は加算1・2の2区分体制を維持。しかし「感染対策」と「医療安全」を一つの加算で評価する構造に限界が指摘されていた。</p>
+          <p><strong>令和8年度（2026年）：</strong>感染対策加算と医療安全対策加算に分離（推定）。それぞれ独立した施設基準として評価される方向。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">解説ポイント</div>
+        <div class="modal-prose">
+          <p><strong>両方取得のメリット：</strong>分離後は両方の加算を同時に算定可能になるため、従来の外来環1本よりも合計点数が増える可能性がある。詳細は告示待ち。</p>
+          <p><strong>体制整備の二面性：</strong>感染対策（滅菌・消毒・エアロゾル対策）と医療安全（救急対応・AED・研修）の両面で施設基準を満たす必要がある。片方しか整備できなければ、分離前より不利になる可能性も。</p>
+          <p><strong>設備投資の判断：</strong>口腔外バキューム、クラスB滅菌器、AED等の未整備がある場合は、施行日前に投資判断を行うべき。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="s3-modal-7">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-mid">デジタル</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>光学印象の対象拡大 ─ CAD/CAM冠への適用</h3>
+      <div class="modal-subtitle">デジタルデンティストリー推進の大きな一歩。投資回収の算段が現実的に</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">R6→R8 改定経緯</div>
+        <div class="modal-prose">
+          <p><strong>CAD/CAMの保険導入史：</strong>2014年（平成26年）にCAD/CAM冠が保険導入。当初は小臼歯のみ、その後大臼歯・前歯と段階的に適用拡大。歯科のデジタル化を診療報酬で後押しする流れが確立された。</p>
+          <p><strong>光学印象の保険導入：</strong>2020年（令和2年）に光学印象（口腔内スキャナーによるデジタル印象）がCAD/CAMインレーに限定して保険算定可能に。100点で開始。</p>
+          <p><strong>令和6年度（2024年）：</strong>光学印象は100点のままCAD/CAMインレーのみ。口腔内スキャナーの普及率は上昇していたが、保険対象が限定的で投資回収が難しいとの声が多かった。</p>
+          <p><strong>令和8年度（2026年）：</strong>100点→150点に増点し、CAD/CAM冠にも対象拡大。対象症例数が大幅に増加し、口腔内スキャナー導入の経済合理性が飛躍的に向上。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">解説ポイント</div>
+        <div class="modal-prose">
+          <p><strong>投資判断の損益分岐：</strong>口腔内スキャナーの導入費用は200〜500万円。150点×10円=1,500円/回。月20件算定で年間36万円の光学印象収入。機器代だけの回収には5〜14年かかるが、印象材・石膏コスト削減、再製率低下、自費への波及効果を加味すれば実質的な回収期間は短縮される。</p>
+          <p><strong>今後の拡大予測：</strong>R10以降、ブリッジ・義歯への光学印象適用拡大が予想される。今回の改定は「入口」であり、早期導入のアドバンテージは大きい。</p>
+          <p><strong>技工所との連携：</strong>デジタル印象データの送受信体制が必要。技工士連携加算2（ICT活用）との組み合わせで相乗効果を狙える。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="s3-modal-8">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-mid">訪問歯科</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>訪問診療の区分再編 ─ 3区分から5区分へ</h3>
+      <div class="modal-subtitle">同一建物の細分化で、訪問先構成により増収・減収が分かれる</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">R6→R8 改定経緯</div>
+        <div class="modal-prose">
+          <p><strong>訪問歯科診療の拡大：</strong>高齢化の進展に伴い、訪問歯科の需要は年々増加。2024年時点で85歳以上人口は約650万人に達し、在宅・施設での歯科ニーズは右肩上がり。</p>
+          <p><strong>令和6年度（2024年）：</strong>訪問診療1〜3の3区分体制。訪問診療1（単一建物1人）が最も高く、同一建物の人数が増えるほど1人あたり点数が下がる構造。</p>
+          <p><strong>R6→R8の間：</strong>中医協で「施設訪問と居宅訪問の評価差が大きすぎる」「同一建物の人数区分が粗い」との指摘。訪問歯科の質の評価と効率性のバランスが議論された。</p>
+          <p><strong>令和8年度（2026年）：</strong>5区分に細分化。訪問2は361→410点（+49点）、訪問3は185→310点（+125点）と大幅増点。一方、多人数訪問は新区分4・5に移行し、実質減点の可能性。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">解説ポイント</div>
+        <div class="modal-prose">
+          <p><strong>訪問先構成の棚卸しが急務：</strong>自院の訪問先が「1人訪問中心」か「施設・多人数中心」かで収益影響が正反対になる。訪問先の同一建物居住者人数のデータを精査すべき。</p>
+          <p><strong>訪問3の+125点は大型増点：</strong>同一建物2〜9人の区分に相当する訪問3は67.6%もの増点。施設訪問を行っている医院にとっては大きなプラス材料。</p>
+          <p><strong>在宅歯科医療情報連携指導料（新設100点）：</strong>訪問の区分再編と同時に、在宅患者の医療情報連携を評価する新設加算も設けられた。訪問体制の強化を検討する医院は合わせて算定体制を整備すべき。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="s3-modal-9">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-mid">物価対応</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>物価対応料の新設 ─ 物価高騰への制度的対応</h3>
+      <div class="modal-subtitle">届出不要・自動適用。R9年度は2倍に段階引き上げ</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">R6→R8 改定経緯</div>
+        <div class="modal-prose">
+          <p><strong>物価高騰の経緯：</strong>2022年以降、ウクライナ情勢・円安を背景に物価が急上昇。消費者物価指数は2023〜2025年で累計約10%上昇。医療材料・光熱費・人件費の同時高騰が歯科医院経営を直撃した。</p>
+          <p><strong>令和6年度（2024年）：</strong>物価対応としては初再診料の微増（+3点/+2点）に「包含」する形で対応。独立した物価対応加算は設けられなかった。医療機関からは「物価上昇スピードに改定が追いつかない」との批判が強まった。</p>
+          <p><strong>R6→R8の間：</strong>2025年も物価上昇が継続。政府の経済対策として「公的価格の物価スライド制」の議論が本格化。診療報酬でも物価変動に機動的に対応できる仕組みの必要性が認識された。</p>
+          <p><strong>令和8年度（2026年）：</strong>物価対応料を初診時・再診時に新設。R8年度は初診3点・再診1点、R9年6月以降は自動で2倍（初診6点・再診2点）に。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">解説ポイント</div>
+        <div class="modal-prose">
+          <p><strong>「自動引き上げ」の意義：</strong>従来の改定では2年ごとの中医協審議を経なければ点数変更ができなかった。物価対応料のR9年度自動2倍化は、改定間の物価変動に対応する<strong>準スライド制</strong>の先駆けと位置付けられる。</p>
+          <p><strong>届出不要の確認：</strong>答申ベースでは届出不要で自動適用とされているが、告示で正式確認が必要。レセコンでの自動反映もベンダーに要確認。</p>
+          <p><strong>患者説明：</strong>窓口負担が微増するため、初再診料の底上げ（項目04）と合わせて患者向け掲示物を準備すべき。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="s3-modal-10">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-mid">補綴</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>義歯クラスプ等の金属 ─ コバルトクロム合金の原則化（答申ベース）</h3>
+      <div class="modal-subtitle">方向性は答申で提示。告示・通知で最終確定予定</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">R6→R8 改定経緯</div>
+        <div class="modal-prose">
+          <p><strong>金パラ問題の背景：</strong>金銀パラジウム合金（金パラ）は長年にわたり歯科保険診療の主要材料だったが、近年の価格高騰で逆ザヤリスクが課題となった。</p>
+          <p><strong>代替材料の推進：</strong>2020年以降、CAD/CAM関連材料やコバルトクロム合金への切り替えが段階的に推進されている。R4改定ではCAD/CAM冠・インレー等の対象拡大が進んだ。</p>
+          <p><strong>令和6年度（2024年）：</strong>金パラは依然として選択肢の一つ。クラスプについても複数材料が並列で設定されている。</p>
+          <p><strong>令和8年度（2026年）：</strong>義歯のクラスプ等についてコバルトクロム合金の「原則化」が答申ベースで示された。例外条件や診療録記載要件は告示・通知で最終確定予定。</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">解説ポイント</div>
+        <div class="modal-prose">
+          <p><strong>「原則化」の実務的意味（想定）：</strong>コバルトクロムが標準、金パラは「例外」という位置付けに転換される可能性が高い。例外の理由は要件確定後に診療録へ整理する運用が望ましい。</p>
+          <p><strong>技工所との事前調整が必須：</strong>委託先技工所がコバルトクロムでの製作体制を整えているか確認。一部の技工所では鋳造設備の変更が必要になる可能性がある。</p>
+          <p><strong>材料コストの変化：</strong>コバルトクロム合金は金パラに比べ材料費が大幅に低い。原則化により材料費負担が軽減される見込みだが、加工の難易度が異なるため技工料への影響も考慮すべき。</p>
+          <p><strong>診療録記載テンプレートの準備：</strong>要件確定後に記載テンプレートを整備し、日次でチェックする体制を構築することが望ましい。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-title">令和6年度 vs 令和8年度 歯科診療報酬改定 比較レポート</div>
+  <p>
+    本レポートは2026年2月21日時点の情報に基づきます。<br>
+    令和8年度改定の点数・要件は2026年2月13日の中医協答申に基づく「答申ベース」であり、<br>
+    3月上旬の告示・通知で正式確定します。告示後に内容が変更される可能性があります。<br>
+    モデル医院の試算は推定値に基づくシミュレーションであり、個別医院の実績を保証するものではありません。<br><br>
+    参照ソース：<a href="https://www.mhlw.go.jp/" target="_blank">厚生労働省HP</a>（一次情報を基本とし、一部解釈に非一次情報を参照）
+  </p>
+  <p style="margin-top:16px; font-size:11px; opacity:0.7;">© 2026 MOCAL Inc. All Rights Reserved.</p>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+// Nav scroll effect
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Tab switching
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const container = btn.closest('.tab-container');
+    container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    container.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Detail modal (Top 10)
+function openDetail(n) {
+  const modal = document.getElementById('modal-' + n);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+// Detail modal (Section 03)
+function openS3Detail(n) {
+  const modal = document.getElementById('s3-modal-' + n);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeDetail() {
+  document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+  document.body.style.overflow = '';
+}
+// Close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeDetail();
+  });
+});
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeDetail();
+});
+
+// Active nav link
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (window.scrollY >= sectionTop) {
+      current = section.getAttribute('id');
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
