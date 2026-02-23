@@ -501,7 +501,7 @@ body {
 .tag-answer { background:var(--blue-light); color:var(--blue); }
 .tag-confirmed { background:var(--teal-light); color:var(--teal); }
 
-/* === SCENARIO CARDS === */
+/* === シナリオCARDS === */
 .scenario-grid {
   display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
   gap:20px;
@@ -940,7 +940,7 @@ body {
   <div class="toc-inner reveal">
     <div class="toc-title">📑 目 次</div>
     <div class="toc-grid">
-      <a href="#summary" class="toc-item"><span class="toc-num">01</span><span class="toc-text">改定ポイント10</span></a>
+      <a href="#summary" class="toc-item"><span class="toc-num">01</span><span class="toc-text">改定ポイント9</span></a>
       <a href="#premise" class="toc-item"><span class="toc-num">02</span><span class="toc-text">前提条件の比較</span></a>
       <a href="#compare" class="toc-item"><span class="toc-num">03</span><span class="toc-text">制度・要件・運用の比較</span></a>
       <a href="#points" class="toc-item"><span class="toc-num">04</span><span class="toc-text">主要点数の新旧比較</span></a>
@@ -957,9 +957,9 @@ body {
 <section class="section" id="summary">
   <div class="section-header reveal">
     <div class="section-num">SECTION 01</div>
-    <h2 class="section-title">改定ポイント10</h2>
+    <h2 class="section-title">改定ポイント9</h2>
     <p class="section-desc">
-      令和8年度改定のポイントを10個厳選。すべて2026年2月13日の中医協答申に基づく「答申ベース」データです。
+      令和8年度改定のポイントを9個厳選。すべて2026年2月13日の中医協答申に基づく「答申ベース」データです。
     </p>
   </div>
 
@@ -1027,20 +1027,9 @@ body {
       <span class="top10-points points-new">新設 100点</span>
       <button class="top10-btn" type="button">詳細を見る</button>
     </div>
-    <!-- 8 -->
-    <div class="card top10-card impact-mid reveal" data-detail="5" onclick="openDetail(5)">
-      <span class="top10-rank">06</span>
-      <span class="top10-badge badge-answer">答申ベース</span>
-      <div class="top10-title">光学印象の増点・対象拡大</div>
-      <div class="top10-detail">
-        100点→150点。CAD/CAM冠にも対象拡大。口腔内スキャナー導入の投資判断が経営課題に直結。
-      </div>
-      <span class="top10-points points-up">+50点/歯</span>
-      <button class="top10-btn" type="button">詳細を見る</button>
-    </div>
     <!-- 7 -->
     <div class="card top10-card impact-mid reveal" data-detail="6" onclick="openDetail(6)">
-      <span class="top10-rank">07</span>
+      <span class="top10-rank">06</span>
       <span class="top10-badge badge-answer">答申ベース</span>
       <div class="top10-title">在宅歯科医療の提供体制強化</div>
       <div class="top10-detail">
@@ -1051,18 +1040,19 @@ body {
     </div>
     <!-- 8 -->
     <div class="card top10-card impact-mid reveal" data-detail="7" onclick="openDetail(7)">
-      <span class="top10-rank">08</span>
+      <span class="top10-rank">07</span>
       <span class="top10-badge badge-answer">答申ベース</span>
-      <div class="top10-title">歯科技術・DXの評価</div>
+      <div class="top10-title">光学印象増点・DXの評価</div>
       <div class="top10-detail">
-        3次元プリント有床義歯（新設4,000点）や技工士連携加算（60/80点）。DX体制整備も収益要件に直結。
+        光学印象の増点・対象拡大に加え、3Dプリント義歯・技工士連携・DX体制整備加算が再編。デジタル投資の回収局面へ。
+      
       </div>
-      <span class="top10-points points-new">新設 4,000点／連携 60–80点</span>
+      <span class="top10-points points-new">光学印象 +50点／新設 4,000点／連携 60–80点</span>
       <button class="top10-btn" type="button">詳細を見る</button>
     </div>
     <!-- 9 -->
     <div class="card top10-card impact-new reveal" data-detail="9" onclick="openDetail(9)">
-      <span class="top10-rank">09</span>
+      <span class="top10-rank">08</span>
       <span class="top10-badge badge-answer">答申ベース</span>
       <div class="top10-title">周術期・回復期の口腔機能管理（新設）</div>
       <div class="top10-detail">
@@ -1073,7 +1063,7 @@ body {
     </div>
     <!-- 10 -->
     <div class="card top10-card impact-new reveal" data-detail="8" onclick="openDetail(8)">
-      <span class="top10-rank">10</span>
+      <span class="top10-rank">09</span>
       <span class="top10-badge badge-answer">答申ベース</span>
       <div class="top10-title">口腔管理体制強化加算（口管強）の算定メリット</div>
       <div class="top10-detail">
@@ -1504,7 +1494,7 @@ body {
   <div class="scenario-grid">
     <!-- Conservative -->
     <div class="card scenario-card scenario-conservative reveal">
-      <div class="scenario-label">SCENARIO A</div>
+      <div class="scenario-label">シナリオA</div>
       <div class="scenario-name">保守（現状維持）</div>
       <div class="scenario-amount">+24,900<span style="font-size:16px;">円/月</span></div>
       <div class="scenario-annual">年間 +約298,800円</div>
@@ -1518,7 +1508,7 @@ body {
     </div>
     <!-- Standard -->
     <div class="card scenario-card scenario-standard reveal">
-      <div class="scenario-label">SCENARIO B</div>
+      <div class="scenario-label">シナリオB</div>
       <div class="scenario-name">標準（一般的対応）</div>
       <div class="scenario-amount">+65,300<span style="font-size:16px;">円/月</span></div>
       <div class="scenario-annual">年間 +約783,600円</div>
@@ -1532,7 +1522,7 @@ body {
     </div>
     <!-- Aggressive -->
     <div class="card scenario-card scenario-aggressive reveal">
-      <div class="scenario-label">SCENARIO C</div>
+      <div class="scenario-label">シナリオC</div>
       <div class="scenario-name">積極（フル算定）</div>
       <div class="scenario-amount">+98,800<span style="font-size:16px;">円/月</span></div>
       <div class="scenario-annual">年間 +約1,185,600円</div>
@@ -2226,15 +2216,6 @@ body {
     </div>
   </div>
 </div>
-
-<div class="modal-overlay" id="modal-5">
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="modal-rank rank-mid">06 ─ 投資判断直結</span>
-      <button class="modal-close" onclick="closeDetail()">✕</button>
-      <h3>光学印象の増点・対象拡大</h3>
-      <div class="modal-subtitle">口腔内スキャナー導入の経営判断に直結する改定</div>
-    </div>
     <div class="modal-body">
       <div class="modal-section">
         <div class="modal-section-title">点数比較</div>
@@ -2307,7 +2288,7 @@ body {
 <div class="modal-overlay" id="modal-6">
   <div class="modal-content">
     <div class="modal-header">
-      <span class="modal-rank rank-mid">07 ─ 在宅強化</span>
+      <span class="modal-rank rank-mid">06 ─ 在宅強化</span>
       <button class="modal-close" onclick="closeDetail()">✕</button>
       <h3>在宅歯科医療の提供体制強化</h3>
       <div class="modal-subtitle">在宅歯科医療推進加算の廃止・再編、在支診基準見直し、地域歯科医療加算の新設</div>
@@ -2418,14 +2399,56 @@ body {
 <div class="modal-overlay" id="modal-7">
   <div class="modal-content">
     <div class="modal-header">
-      <span class="modal-rank rank-mid">08 ─ 歯科技術・DX</span>
+      <span class="modal-rank rank-mid">07 ─ 歯科技術・DX</span>
       <button class="modal-close" onclick="closeDetail()">✕</button>
-      <h3>歯科技術・DXの評価</h3>
-      <div class="modal-subtitle">3Dプリント義歯・技工士連携・DX体制整備の評価拡充</div>
+      <h3>光学印象増点・DXの評価</h3>
+      <div class="modal-subtitle">光学印象の増点・対象拡大、3Dプリント義歯新設、技工士連携強化、DX体制整備加算の再編</div>
     </div>
     <div class="modal-body">
       <div class="modal-section">
-        <div class="modal-section-title">新設・評価項目（答申ベース）</div>
+        <div class="modal-section-title">光学印象の評価拡充</div>
+        <div class="table-wrap">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th>現行</th>
+                <th>改定後</th>
+                <th>増減</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>光学印象（1歯につき）</td>
+                <td>100点</td>
+                <td><strong>150点</strong></td>
+                <td class="cell-change cell-up">+50点</td>
+              </tr>
+              <tr>
+                <td>CAD/CAMインレー</td>
+                <td>750点</td>
+                <td>770点</td>
+                <td class="cell-change cell-up">+20点</td>
+              </tr>
+              <tr>
+                <td>光学印象歯科技工士連携加算</td>
+                <td>50点</td>
+                <td>50点</td>
+                <td>変更なし</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-impact-box new" style="margin-top:12px;">
+          <div class="modal-impact-icon">💡</div>
+          <div class="modal-impact-text">
+            CAD/CAM冠への対象拡大で算定件数が増加。施設基準（補綴経験3年以上＋デジタル印象採得装置の院内保有）の届出が必須。
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">新設・評価見直し（答申ベース）</div>
         <div class="table-wrap">
           <table class="comp-table">
             <thead>
@@ -2452,21 +2475,60 @@ body {
         </div>
         <div class="modal-impact-box" style="margin-top:12px;">
           <div class="modal-impact-icon">💡</div>
-          <div class="modal-impact-text">ICT活用（加算2：80点）が対面（加算1：60点）より高評価。Web会議や口腔内画像の共有環境整備が有利。</div>
+          <div class="modal-impact-text">
+            ICT活用（加算2：80点）が対面（加算1：60点）より高評価。Web会議や口腔内画像共有環境を整備すれば遠方技工所とも連携しやすい。
+          </div>
         </div>
       </div>
+
       <div class="modal-section">
-        <div class="modal-section-title">医療DX推進体制整備加算</div>
+        <div class="modal-section-title">電子的歯科診療情報連携体制整備加算</div>
+        <div class="modal-impact-box">
+          <div class="modal-impact-icon">⚠️</div>
+          <div class="modal-impact-text">
+            R6の「医療DX推進体制整備加算（6点）」は廃止され、R8で名称変更・再編。初診に加え再診にも加算が新設。
+          </div>
+        </div>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>区分</th>
+                <th>R6（現行）</th>
+                <th>R8（改定後）</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>初診（上位）</td>
+                <td rowspan="3">医療DX推進体制整備加算 6点（一律）</td>
+                <td><strong>加算1：9点</strong></td>
+              </tr>
+              <tr>
+                <td>初診（下位）</td>
+                <td><strong>加算2：4点</strong></td>
+              </tr>
+              <tr>
+                <td>再診（新設）</td>
+                <td><strong>加算あり</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div class="modal-prose">
-          <p>マイナ保険証の利用実績や電子処方箋の導入が、医療DX推進体制整備加算の算定条件として重視される。DX対応の体制整備が収益に直結する構造がより鮮明。</p>
+          <p>マイナ保険証の利用実績、電子処方箋、電子カルテ情報共有サービス、サイバーセキュリティ対策が算定条件として重視。加算1（9点）を取るには電子処方箋導入が実質必須。</p>
         </div>
       </div>
+
       <div class="modal-section">
         <div class="modal-section-title">アクションチェックリスト</div>
         <ul class="modal-checklist">
+          <li>光学印象の施設基準届出（補綴経験3年以上＋デジタル印象採得装置）</li>
+          <li>電子的歯科診療情報連携体制整備加算の届出切替</li>
           <li>技工所とのICT連携（Web会議・画像共有）の運用設計</li>
           <li>3Dプリント義歯の対応可否を技工所と確認</li>
           <li>マイナ保険証利用率・電子処方箋の対応状況を定点確認</li>
+          <li>CAD/CAM冠での光学印象算定に向けたスキャナー操作研修</li>
         </ul>
       </div>
     </div>
@@ -2476,7 +2538,7 @@ body {
 <div class="modal-overlay" id="modal-8">
   <div class="modal-content">
     <div class="modal-header">
-      <span class="modal-rank rank-mid">10 ─ 施設基準変更</span>
+      <span class="modal-rank rank-mid">09 ─ 施設基準変更</span>
       <button class="modal-close" onclick="closeDetail()">✕</button>
       <h3>口腔管理体制強化加算（口管強）の算定メリット</h3>
       <div class="modal-subtitle">管理料・歯周病治療・在宅の各場面で評価が拡充</div>
@@ -2620,7 +2682,7 @@ body {
 <div class="modal-overlay" id="modal-9">
   <div class="modal-content">
     <div class="modal-header">
-      <span class="modal-rank rank-new">09 ─ 新設項目</span>
+      <span class="modal-rank rank-new">08 ─ 新設項目</span>
       <button class="modal-close" onclick="closeDetail()">✕</button>
       <h3>周術期・回復期の口腔機能管理（新設）</h3>
       <div class="modal-subtitle">計画策定料1/2の新設 ─ 病院連携の新たな収益源</div>
@@ -2677,7 +2739,7 @@ body {
         <div class="modal-prose">
           <p><strong>令和6年度（2024年）：</strong>周術期等口腔機能管理は手術患者が対象。糖尿病と歯周病の関連は学術的に確立されていたが、診療報酬上の連携評価は限定的だった。歯科疾患管理料のハイリスク加算（糖尿病）50点のみ。</p>
           <p><strong>骨太方針2025（R7年6月閣議決定）：</strong>「糖尿病と歯周病との関係など全身の健康と口腔の健康に関するエビデンスの活用」「医歯薬連携などの多職種連携」が明記。医科歯科連携が<strong>国の政策方針</strong>として明確に位置付けられた。</p>
-          <p><strong>令和8年度（2026年）：</strong>糖尿病患者等の紹介に基づく歯周治療と情報提供を評価する<strong>重症化予防連携強化加算（100点）</strong>が新設。周術期等・回復期等の口腔機能管理の新設（Top10の09）と合わせ、医科歯科連携の評価が大幅に拡充。</p>
+          <p><strong>令和8年度（2026年）：</strong>糖尿病患者等の紹介に基づく歯周治療と情報提供を評価する<strong>重症化予防連携強化加算（100点）</strong>が新設。周術期等・回復期等の口腔機能管理の新設（Top10の08）と合わせ、医科歯科連携の評価が大幅に拡充。</p>
         </div>
       </div>
       <div class="modal-section">
@@ -2705,7 +2767,7 @@ body {
         <ul class="modal-checklist">
           <li>近隣医科医療機関とのパイプ構築（内科・整形外科・病院）</li>
           <li>糖尿病患者への歯周病管理フローの院内整備</li>
-          <li>回復期等口腔機能管理の算定体制構築（Top10の09と連動）</li>
+          <li>回復期等口腔機能管理の算定体制構築（Top10の08と連動）</li>
           <li>電子カルテ情報共有サービスへの対応確認</li>
           <li>歯科衛生士への生活習慣病連携研修の実施</li>
         </ul>
