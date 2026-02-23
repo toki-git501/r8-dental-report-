@@ -877,30 +877,6 @@ body {
   font-size:13px;
 }
 .pt-change .arrow { font-size:11px; }
-
-/* === PRINT === */
-@media print {
-  @page { size: A4; margin: 12mm; }
-  * { box-shadow: none !important; text-shadow: none !important; }
-  html, body { background:#fff !important; color:#000 !important; }
-  body { font-size: 11pt; line-height: 1.6; }
-  a, a:visited { color:#000; text-decoration: none; }
-
-  .nav, .hero::before, .hero::after, .detail-banner { display: none !important; }
-  .hero { background:#fff !important; color:#000 !important; padding: 24px 0 12px; }
-  .hero-stat, .card, .top10-card, .scenario-card, .forecast-card {
-    border: 1px solid #ccc !important;
-    background:#fff !important;
-  }
-
-  .section { padding: 18px 0; page-break-inside: avoid; }
-  .section-header { page-break-after: avoid; }
-  .card, .top10-card, .scenario-card, .forecast-card, table { page-break-inside: avoid; }
-
-  .modal-overlay { display: none !important; }
-  .reveal { opacity: 1 !important; transform: none !important; }
-  .toc-section { background: #fff !important; }
-}
 </style>
 </head>
 <body>
@@ -966,7 +942,7 @@ body {
   <div class="toc-inner reveal">
     <div class="toc-title">📑 目 次</div>
     <div class="toc-grid">
-      <a href="#summary" class="toc-item"><span class="toc-num">01</span><span class="toc-text">経営インパクト Top 10</span></a>
+      <a href="#summary" class="toc-item"><span class="toc-num">01</span><span class="toc-text">改定ポイント10</span></a>
       <a href="#premise" class="toc-item"><span class="toc-num">02</span><span class="toc-text">前提条件の比較</span></a>
       <a href="#compare" class="toc-item"><span class="toc-num">03</span><span class="toc-text">制度・要件・運用の比較</span></a>
       <a href="#points" class="toc-item"><span class="toc-num">04</span><span class="toc-text">主要点数の新旧比較</span></a>
@@ -984,9 +960,9 @@ body {
 <section class="section" id="summary">
   <div class="section-header reveal">
     <div class="section-num">SECTION 01</div>
-    <h2 class="section-title">経営インパクト Top 10</h2>
+    <h2 class="section-title">改定ポイント10</h2>
     <p class="section-desc">
-      令和8年度改定で最も収益影響が大きい項目を、インパクト順にランキング。すべて2026年2月13日の中医協答申に基づく「答申ベース」データです。
+      令和8年度改定のポイントを10個厳選。すべて2026年2月13日の中医協答申に基づく「答申ベース」データです。
     </p>
   </div>
 
@@ -1898,68 +1874,44 @@ body {
 <section class="section" id="checklist">
   <div class="section-header reveal">
     <div class="section-num">SECTION 10–11</div>
-    <h2 class="section-title">チェックリスト</h2>
+    <h2 class="section-title">医院のチェックリスト</h2>
     <p class="section-desc">
-      院長・事務長それぞれのチェック項目をインタラクティブに確認できます。クリックでチェックを付けられます。
+      院長・事務長の項目を統合した医院用チェックリストです。クリックでチェックを付けられます。
     </p>
   </div>
 
-  <div class="tab-container reveal">
-    <div class="tab-nav">
-      <button class="tab-btn active" data-tab="tab-cl-director">🏥 院長用（16項目）</button>
-      <button class="tab-btn" data-tab="tab-cl-admin">📋 事務長用（23項目）</button>
-    </div>
-
-    <!-- Director Checklist -->
-    <div class="tab-panel active" id="tab-cl-director">
-      <div class="checklist-grid">
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">答申書（歯科部分）を通読した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">経営方針（保守/標準/積極）を仮決定した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料の継続賃上げ要件を確認した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">賃上げ幅と対象職員を決裁した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口腔内スキャナー導入の投資判断を行った</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口腔機能管理料の算定体制を確認した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口管強の新施設基準を満たせるか確認した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">自費メニュー戦略の見直し方針を決めた</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">訪問歯科の体制・方針を見直した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">外部連携先への連絡方針を決めた</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">設備投資の予算を承認した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">患者説明方針を承認した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">DH・スタッフの採用計画を見直した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">R9年度ベースアップ2倍化に向けた中期計画に着手した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">回復期口腔管理への参入可否を検討した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">歯科技工所との連携方針を確認した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
-      </div>
-    </div>
-
-    <!-- Admin Checklist -->
-    <div class="tab-panel" id="tab-cl-admin">
-      <div class="checklist-grid">
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">答申書の歯科関連部分を要約し院長に報告した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料の計算支援ツールでシミュレーションした</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">レセコンベンダーに改定対応スケジュールを確認した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">告示・通知を入手し新旧対照表を作成した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">SPT→歯周病継続支援治療の移行マニュアルを作成した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">施設基準届出書類の準備を開始した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">スタッフ勉強会の日程を調整した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">算定漏れ防止チェックリストを作成・配布した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">レセコンのマスター更新テストを実施した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">患者向け説明資料・掲示物を作成した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料の届出書類を作成し院長承認を得た</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">施設基準の届出を厚生局に提出した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口腔機能管理料の算定フローを整備した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">技工所ベースアップ支援料の委託先確認を行った</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">パラ使用時の診療録記載テンプレートを整備した（要件確定後）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">光学印象の施設基準届出状況を確認した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">訪問歯科の区分4・5の運用ルールを整備した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">6月分レセプトの全件チェック体制を構築した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ賃金改善実績報告のスケジュールを把握した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">疑義解釈のフォロー体制を構築した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">返戻/査定分析の月次レポートフォーマットを作成した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">監査対応用の帳票一覧を作成・整備した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
-        <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">中医協議事録のウォッチ体制を構築した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
-      </div>
-    </div>
+<div class="checklist-grid">
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">答申書の歯科部分を通読し、要点を院内共有した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料の継続賃上げ要件を確認し、賃上げ幅・対象を決裁した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料のシミュレーションを実施した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">レセコンベンダーに改定対応スケジュールを確認した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">告示・通知を入手し新旧対照表を作成した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">SPT→歯周病継続支援治療の移行マニュアルを作成した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">施設基準届出書類の準備を開始した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">スタッフ勉強会の日程を調整した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">算定漏れ防止チェックリストを作成・配布した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">レセコンのマスター更新テストを実施した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口腔機能管理料の算定体制・フローを整備した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口管強の新施設基準を満たせるか確認した</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">患者向け説明資料・掲示物を作成した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口腔内スキャナー導入の投資判断を行った</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">光学印象の施設基準届出状況を確認した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">訪問歯科の体制・方針と区分4・5の運用ルールを整備した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">外部連携先への連絡方針を決めた</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">技工所（ベースアップ支援料含む）との連携方針を確認した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">施設基準の届出を厚生局に提出した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">6月分レセプトの全件チェック体制を構築した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ賃金改善実績報告のスケジュールを把握した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">疑義解釈のフォロー体制を構築した</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">返戻/査定分析の月次レポートを作成した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">監査対応用の帳票一覧を整備した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">DH・スタッフの採用計画を見直した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">自費メニュー戦略の見直し方針を決めた</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">設備投資の予算を承認した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">R9年度ベースアップ2倍化に向けた中期計画に着手した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">回復期口腔管理への参入可否を検討した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">歯科用金属の例外使用時の診療録記載テンプレートを整備した（要件確定後）</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">中医協議事録のウォッチ体制を構築した</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
   </div>
 </section>
 
@@ -1998,7 +1950,7 @@ body {
           <td>改定率の閣議決定</td>
         </tr>
         <tr>
-          <td><a href="https://www.mhlw.go.jp/content/10808000/001655177.pdf" target="_blank" style="color:var(--blue);text-decoration:underline;">答申書（令和8年度）PDF</a></td>
+          <td><a href="2026toushin01.pdf" target="_blank" style="color:var(--blue);text-decoration:underline;">答申書（令和8年度）PDF</a></td>
           <td>2026-02-21</td>
           <td>答申書本文・附帯意見</td>
         </tr>
@@ -2937,12 +2889,11 @@ body {
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer-title">令和6年度 vs 令和8年度 歯科診療報酬改定 比較レポート</div>
-  <p>
-    本レポートは2026年2月21日時点の情報に基づきます。<br>
-    令和8年度改定の点数・要件は2026年2月13日の中医協答申に基づく「答申ベース」であり、<br>
-    3月上旬の告示・通知で正式確定します。告示後に内容が変更される可能性があります。<br>
-    モデル医院の試算は推定値に基づくシミュレーションであり、個別医院の実績を保証するものではありません。<br><br>
-    参照ソース：<a href="https://www.mhlw.go.jp/" target="_blank">厚生労働省HP</a>（一次情報を基本とし、一部解釈に非一次情報を参照）
+    <p>
+    【ご注意】<br>
+    本内容は2026年2月21日時点の情報に基づきます。令和8年度改定の点数・要件は2026年2月13日の中医協答申（答申ベース）を引用しており、3月の告示・通知により変更される場合があります。<br>
+    また、算出されたシミュレーション値は推定値であり、個別医院の実績を保証するものではありません。<br>
+    参照元：厚生労働省Webサイト（一次情報を優先し、一部独自の解釈を含む）
   </p>
   <p style="margin-top:16px; font-size:11px; opacity:0.7;">© 2026 MOCAL Inc. All Rights Reserved.</p>
 </footer>
