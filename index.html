@@ -877,6 +877,30 @@ body {
   font-size:13px;
 }
 .pt-change .arrow { font-size:11px; }
+
+/* === PRINT === */
+@media print {
+  @page { size: A4; margin: 12mm; }
+  * { box-shadow: none !important; text-shadow: none !important; }
+  html, body { background:#fff !important; color:#000 !important; }
+  body { font-size: 11pt; line-height: 1.6; }
+  a, a:visited { color:#000; text-decoration: none; }
+
+  .nav, .hero::before, .hero::after, .detail-banner { display: none !important; }
+  .hero { background:#fff !important; color:#000 !important; padding: 24px 0 12px; }
+  .hero-stat, .card, .top10-card, .scenario-card, .forecast-card {
+    border: 1px solid #ccc !important;
+    background:#fff !important;
+  }
+
+  .section { padding: 18px 0; page-break-inside: avoid; }
+  .section-header { page-break-after: avoid; }
+  .card, .top10-card, .scenario-card, .forecast-card, table { page-break-inside: avoid; }
+
+  .modal-overlay { display: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .toc-section { background: #fff !important; }
+}
 </style>
 </head>
 <body>
@@ -1165,84 +1189,84 @@ body {
       </thead>
       <tbody>
         <tr class="clickable-row" onclick="openS3Detail(1)">
-          <td><span class="tag tag-high">改定率</span></td>
+          <td><span class="tag tag-high">改定率</span><button class="row-btn" type="button">詳細</button></td>
           <td class="cell-label">本体改定率</td>
           <td>+0.88%</td>
           <td class="cell-change cell-up">+3.09%</td>
           <td>+2.21pt。30年ぶりの高水準</td>
-          <td><span class="tag tag-confirmed">確定</span><button class="row-btn" type="button">詳細</button></td>
+          <td><span class="tag tag-confirmed">確定</span></td>
         </tr>
         <tr class="clickable-row" onclick="openS3Detail(2)">
-          <td><span class="tag tag-high">賃上げ</span></td>
+          <td><span class="tag tag-high">賃上げ</span><button class="row-btn" type="button">詳細</button></td>
           <td class="cell-label">ベースアップ評価料の対象職員</td>
           <td>看護職員等の医療関係職種</td>
           <td class="cell-new">全勤務職員に拡大</td>
           <td>事務職員・歯科技工士も明確に包含。届出区分の再計算が必須</td>
-          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+          <td><span class="tag tag-answer">答申</span></td>
         </tr>
         <tr class="clickable-row" onclick="openS3Detail(3)">
-          <td><span class="tag tag-high">賃上げ</span></td>
+          <td><span class="tag tag-high">賃上げ</span><button class="row-btn" type="button">詳細</button></td>
           <td class="cell-label">賃上げ継続による差別化</td>
           <td>なし（一律）</td>
           <td class="cell-new">継続賃上げ医院は高い点数を算定可</td>
           <td>新規概念。届出・報告義務の追加</td>
-          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+          <td><span class="tag tag-answer">答申</span></td>
         </tr>
         <tr class="clickable-row" onclick="openS3Detail(4)">
-          <td><span class="tag tag-mid">施設基準</span></td>
+          <td><span class="tag tag-mid">施設基準</span><button class="row-btn" type="button">詳細</button></td>
           <td class="cell-label">口管強（旧か強診）の名称・要件</td>
           <td>現行の要件体系</td>
           <td class="cell-new">名称・要件を見直し。口腔機能管理の実績要件追加</td>
           <td>口腔機能検査の体制整備が前提条件に</td>
-          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+          <td><span class="tag tag-answer">答申</span></td>
         </tr>
         <tr class="clickable-row" onclick="openS3Detail(5)">
-          <td><span class="tag tag-high">歯周治療</span></td>
+          <td><span class="tag tag-high">歯周治療</span><button class="row-btn" type="button">詳細</button></td>
           <td class="cell-label">SPT/P重防の体系</td>
           <td>SPTとP重防が別建て</td>
           <td class="cell-new">「歯周病継続支援治療」に一本化</td>
           <td>レセコンマスター全面改修。運用変更最大級</td>
-          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+          <td><span class="tag tag-answer">答申</span></td>
         </tr>
         <tr class="clickable-row" onclick="openS3Detail(6)">
-          <td><span class="tag tag-mid">感染対策</span></td>
+          <td><span class="tag tag-mid">感染対策</span><button class="row-btn" type="button">詳細</button></td>
           <td class="cell-label">外来環の体系</td>
           <td>歯科外来診療環境体制加算1・2</td>
           <td class="cell-new">感染対策加算と医療安全対策加算に分離</td>
           <td>両方取得で合計点数増の可能性</td>
-          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+          <td><span class="tag tag-answer">答申</span></td>
         </tr>
         <tr class="clickable-row" onclick="openS3Detail(7)">
-          <td><span class="tag tag-mid">デジタル</span></td>
+          <td><span class="tag tag-mid">デジタル</span><button class="row-btn" type="button">詳細</button></td>
           <td class="cell-label">光学印象の対象</td>
           <td>CAD/CAMインレーのみ</td>
           <td class="cell-new">CAD/CAMインレー + CAD/CAM冠</td>
           <td>対象症例が大幅増加。スキャナー投資判断に直結</td>
-          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+          <td><span class="tag tag-answer">答申</span></td>
         </tr>
         <tr class="clickable-row" onclick="openS3Detail(8)">
-          <td><span class="tag tag-mid">訪問歯科</span></td>
+          <td><span class="tag tag-mid">訪問歯科</span><button class="row-btn" type="button">詳細</button></td>
           <td class="cell-label">訪問診療の区分</td>
           <td>訪問診療1〜3（3区分）</td>
           <td class="cell-new">訪問診療1〜5（5区分）</td>
           <td>単一建物1人は増点、多人数は実質減点</td>
-          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+          <td><span class="tag tag-answer">答申</span></td>
         </tr>
         <tr class="clickable-row" onclick="openS3Detail(9)">
-          <td><span class="tag tag-mid">物価対応</span></td>
+          <td><span class="tag tag-mid">物価対応</span><button class="row-btn" type="button">詳細</button></td>
           <td class="cell-label">物価高騰への対応</td>
           <td>なし</td>
           <td class="cell-new">物価対応料を新設</td>
           <td>R9年度は2倍に自動引き上げ</td>
-          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+          <td><span class="tag tag-answer">答申</span></td>
         </tr>
         <tr class="clickable-row" onclick="openS3Detail(10)">
-          <td><span class="tag tag-low">補綴</span></td>
+          <td><span class="tag tag-low">補綴</span><button class="row-btn" type="button">詳細</button></td>
           <td class="cell-label">義歯クラスプ等の金属</td>
           <td>金銀パラジウム合金等も可</td>
           <td class="cell-new">コバルトクロム合金の原則化（答申ベース）</td>
           <td>告示・通知で要件確定予定。パラ使用時の記載要件は最終確認が必要</td>
-          <td><span class="tag tag-answer">答申</span><button class="row-btn" type="button">詳細</button></td>
+          <td><span class="tag tag-answer">答申</span></td>
         </tr>
       </tbody>
     </table>
