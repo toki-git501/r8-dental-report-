@@ -877,6 +877,30 @@ body {
   font-size:13px;
 }
 .pt-change .arrow { font-size:11px; }
+
+/* === PRINT === */
+@media print {
+  @page { size: A4; margin: 12mm; }
+  * { box-shadow: none !important; text-shadow: none !important; }
+  html, body { background:#fff !important; color:#000 !important; }
+  body { font-size: 11pt; line-height: 1.6; }
+  a, a:visited { color:#000; text-decoration: none; }
+
+  .nav, .hero::before, .hero::after, .detail-banner { display: none !important; }
+  .hero { background:#fff !important; color:#000 !important; padding: 24px 0 12px; }
+  .hero-stat, .card, .top10-card, .scenario-card, .forecast-card {
+    border: 1px solid #ccc !important;
+    background:#fff !important;
+  }
+
+  .section { padding: 18px 0; page-break-inside: avoid; }
+  .section-header { page-break-after: avoid; }
+  .card, .top10-card, .scenario-card, .forecast-card, table { page-break-inside: avoid; }
+
+  .modal-overlay { display: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .toc-section { background: #fff !important; }
+}
 </style>
 </head>
 <body>
